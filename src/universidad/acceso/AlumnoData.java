@@ -25,7 +25,7 @@ public class AlumnoData {
             ps.executeUpdate();
             ResultSet rs= ps.getGeneratedKeys();
             if(rs.next()){
-                alumno.setIdAlumno();
+                
             }
         
         } catch (SQLException ex) {

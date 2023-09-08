@@ -5,12 +5,16 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.mariadb.jdbc.Statement;
+/*import org.mariadb.jdbc.Statement;*/
 
 public class AlumnoData {
     private Connection con = null;
+    public AlumnoData(){
+       
+    }
     
     public void guardarAlumno(Alumno alumno){
         

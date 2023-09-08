@@ -32,4 +32,14 @@ public class Conexion {
         }
         return conexion;
     }
+
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(Connection conexion) {
+        this.conexion = conexion;
+    }
+    
+    
 }

@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*import org.mariadb.jdbc.Statement;*/
@@ -17,7 +19,7 @@ public class AlumnoData {
     
     public AlumnoData() {
         con = Conexion.buscarConexion();
-        
+        //en el video sale como getConexion
     }
 
     public void guardarAlumno(Alumno alumno) {
@@ -45,6 +47,31 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
 
+    }
+    
+    public void modificarAlumno(Alumno alumno){
+        
+        String sql = "UPDATE alumno SET dni= ?, apellido = ?, nombre = ?, fechaNac = ? "
+                + "WHERE idAlumno = ? ";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
+            ps.setInt(5, alumno.getIdAlumno());
+            
+            int exito = ps.executeUpdate();
+             
+            if(exito == 1){
+                 JOptionPane.showMessageDialog(null, "Alumno modificado correctamente");
+            }
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno"); 
+        }
+                
     }
 
 }

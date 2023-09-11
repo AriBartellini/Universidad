@@ -17,7 +17,7 @@ public class Conexion {
     public Conexion() {
     }
 
-    public static Connection buscarConexion() {
+    public static Connection buscarConexion() {  //en el video sale como getConnection
          
         if (conexion == null) {
             try {

@@ -12,9 +12,12 @@ public class Universidad {
     public static void main(String[] args) {
     Conexion con= new Conexion();
     
-    Alumno ari = new Alumno(40678534,"Bartellini", "Ari", LocalDate.of(1998, Month.JANUARY,8),true);
+     Alumno ari = new Alumno(1,40678534,"Bartellini", "Ari", LocalDate.of(1998, Month.JANUARY,8),true);
     AlumnoData alumno = new AlumnoData();
-    alumno.guardarAlumno(ari);
+    //alumno.guardarAlumno(ari);
+    alumno.modificarAlumno(ari);
+    
+    
     }
     
 }

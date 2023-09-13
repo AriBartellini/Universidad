@@ -5,6 +5,13 @@
  */
 package universidad.vistas;
 
+import com.toedter.calendar.JCalendar;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import universidad.acceso.AlumnoData;
+import universidad.entidades.Alumno;
+
 /**
  *
  * @author mauriPC
@@ -174,7 +181,14 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        
+    int dni=Integer.parseInt( jtfDocumento.getText());
+    String nombre= jtfNombre.getText();
+    String apellido= jtfApellido.getText();
+    LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    Boolean estado = jrbEstado.isSelected();
+    Alumno alu= new Alumno(dni,apellido,nombre, fechaNacimiento , estado);
+    AlumnoData alumno = new AlumnoData();
+    alumno.guardarAlumno(alu);
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 

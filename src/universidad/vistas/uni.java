@@ -1,16 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidad.vistas;
-
-import javafx.application.Platform;
-
-/**
- *
- * @author Ari
- */
 public class uni extends javax.swing.JFrame {
 
     /**
@@ -114,6 +102,11 @@ public class uni extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jmSalir.setText("Salir");
+        jmSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSalirMouseClicked(evt);
+            }
+        });
         jmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmSalirActionPerformed(evt);
@@ -184,10 +177,12 @@ public class uni extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAlumnosPorMateriaActionPerformed
 
     private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
-        System.exit(WIDTH);
-        //Platform.exit();
-        
+        // esto no hace nada 
     }//GEN-LAST:event_jmSalirActionPerformed
+
+    private void jmSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jmSalirMouseClicked
 
     /**
      * @param args the command line arguments

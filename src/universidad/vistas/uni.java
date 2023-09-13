@@ -70,6 +70,11 @@ public class uni extends javax.swing.JFrame {
         jMenu2.setText("Materia");
 
         jMenuItem2.setText("Formulario de materia");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -118,6 +123,16 @@ public class uni extends javax.swing.JFrame {
         escritorio.add(ga);
         escritorio.moveToFront(ga);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll(); 
+        escritorio.repaint();
+        GestionMaterias gm=new GestionMaterias();
+        gm.setVisible(true);
+        escritorio.add(gm);
+        escritorio.moveToFront(gm);
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,7 +1,6 @@
 package universidad.acceso;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,19 +11,19 @@ import javax.swing.JOptionPane;
 import universidad.entidades.Materia;
 
 public class MateriaData {
+
     private Connection con = null;
-            
-        public MateriaData(){
-            con = Conexion.buscarConexion();
-        }   
-        
-       public void guardarMateria(Materia materia) {
+
+    public MateriaData() {
+        con = Conexion.buscarConexion();
+    }
+
+    public void guardarMateria(Materia materia) {
 
         String sql = "INSERT INTO materia ( nombre, anio, estado) VALUES (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
             ps.setBoolean(3, materia.isActivo());
@@ -50,11 +49,10 @@ public class MateriaData {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ;
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
             ps.setBoolean(3, true);
-            
+
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
@@ -91,7 +89,6 @@ public class MateriaData {
         return materia;
     }
 
-   
     public List<Materia> listarMaterias() {
         List<Materia> materias = new ArrayList<>();
         try {

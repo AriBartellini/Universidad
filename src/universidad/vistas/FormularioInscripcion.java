@@ -37,6 +37,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
+        setTitle("Formulario Inscripcion");
+
         jLabel1.setText("Seleccione un alumno:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

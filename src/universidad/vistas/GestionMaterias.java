@@ -60,8 +60,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Estado:");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel5.setText("Materia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

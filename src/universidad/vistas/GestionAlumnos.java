@@ -52,6 +52,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         setTitle("Gestion Alumnos");
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbBuscarMouseClicked(evt);
+            }
+        });
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarActionPerformed(evt);
@@ -155,11 +160,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jrbEstado)))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(13, 13, 13))
+                    .addComponent(jLabel5)
                     .addComponent(jdFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbEliminar)
@@ -172,8 +175,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-       int dni = Integer.parseInt(jtfDocumento.getText());
-       
+      
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -190,6 +192,14 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     AlumnoData alumno = new AlumnoData();
     alumno.guardarAlumno(alu);
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
+        int dni = Integer.parseInt(jtfDocumento.getText());
+       AlumnoData alumno = new AlumnoData();
+       Alumno alu = alumno.buscarAlumnoPorDni(dni);
+       
+       alu.toString();
+    }//GEN-LAST:event_jbBuscarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

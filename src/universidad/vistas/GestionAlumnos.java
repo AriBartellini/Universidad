@@ -6,6 +6,7 @@
 package universidad.vistas;
 
 import com.toedter.calendar.JCalendar;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
@@ -63,9 +64,20 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbNuevo.setText("Nuevo");
+        jbNuevo.setText("Limpiar");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.setEnabled(false);
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +143,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jbGuardar)
                         .addGap(41, 41, 41)
                         .addComponent(jbSalir)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,11 +207,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
         int dni = Integer.parseInt(jtfDocumento.getText());
-       AlumnoData alumno = new AlumnoData();
-       Alumno alu = alumno.buscarAlumnoPorDni(dni);
+      AlumnoData alumno = new AlumnoData();
+      Alumno alu = alumno.buscarAlumnoPorDni(dni);
+       jtfApellido.setText(alu.getApellido());
+       jtfNombre.setText(alu.getNombre());
+       jrbEstado.setSelected(alu.isActivo());
+      jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
        
-       alu.toString();
     }//GEN-LAST:event_jbBuscarMouseClicked
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+jtfDocumento.setText("");
+jtfApellido.setText("");
+jtfNombre.setText("");
+jrbEstado.setSelected(false);
+jdFechaNacimiento.setDate( null);
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

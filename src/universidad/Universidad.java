@@ -32,3 +32,11 @@ public class Universidad {
     }
     
 }
+
+/*
+1)Al hacer un borrado logico en materia o alumno, se duplica al recargarlo en vez de reactivarlo
+2)Podemos cambiar el boton Buscar del formulario de materias?
+3)que tanto nos podemos alejar del modelo original?
+4)Como no agregar materias iguales? 
+5) No podemos no poner la ultima nota en inscripcion?
+*/

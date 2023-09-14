@@ -6,10 +6,15 @@
 package universidad.vistas;
 
 import com.toedter.calendar.JCalendar;
+import java.awt.GridLayout;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import universidad.Universidad;
 import universidad.acceso.AlumnoData;
 import universidad.entidades.Alumno;
@@ -121,7 +126,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbEstado)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -129,7 +133,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                                     .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)
-                                .addComponent(jbBuscar))))
+                                .addComponent(jbBuscar))
+                            .addComponent(jrbEstado)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -143,7 +148,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jbGuardar)
                         .addGap(41, 41, 41)
                         .addComponent(jbSalir)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,10 +230,25 @@ jdFechaNacimiento.setDate(null);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-    int dni=Integer.parseInt( jtfDocumento.getText()); 
+    int dni=Integer.parseInt( jtfDocumento.getText());
     AlumnoData alumno = new AlumnoData();
-    alumno.eliminarAlumnoPorDni(dni);
     
+    int respuesta = JOptionPane.showConfirmDialog(
+                    GestionAlumnos.this,
+                    "¿Estás seguro de que deseas eliminar al alumno con dni: "+"'"+dni+"'",
+                    "Confirmación",
+                    JOptionPane.YES_NO_OPTION
+                );
+    if (respuesta == JOptionPane.YES_OPTION) {
+                    alumno.eliminarAlumnoPorDni(dni);
+                } else {
+                    JOptionPane.showMessageDialog(
+                        GestionAlumnos.this,
+                        "Operación cancelada",
+                        "Información",
+                        JOptionPane.INFORMATION_MESSAGE
+                    );
+    }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
 

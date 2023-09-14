@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
+import universidad.Universidad;
 import universidad.acceso.AlumnoData;
 import universidad.entidades.Alumno;
 
@@ -72,7 +73,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
-        jbEliminar.setEnabled(false);
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
@@ -221,11 +221,14 @@ jtfDocumento.setText("");
 jtfApellido.setText("");
 jtfNombre.setText("");
 jrbEstado.setSelected(false);
-jdFechaNacimiento.setDate( null);
+jdFechaNacimiento.setDate(null);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+    int dni=Integer.parseInt( jtfDocumento.getText()); 
+    AlumnoData alumno = new AlumnoData();
+    alumno.eliminarAlumnoPorDni(dni);
+    
     }//GEN-LAST:event_jbEliminarActionPerformed
 
 

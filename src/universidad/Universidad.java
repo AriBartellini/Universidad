@@ -46,7 +46,11 @@ public class Universidad {
     Materia mate= md.buscarMateriaPorId(2);
     
     Inscripcion insc = new Inscripcion(ari,mate,9);
-    id.guardarInscripcion(insc);
+    //id.guardarInscripcion(insc);
+    //id.actualizarNota(1, 2, 7);
+    id.borrarInscripcionMateriaAlumno(1, 2);
+    
+    
     }
     
 }

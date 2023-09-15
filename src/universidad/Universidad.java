@@ -7,8 +7,10 @@ import universidad.acceso.AlumnoData;
 */
 import java.time.LocalDate;
 import java.time.Month;
+import universidad.acceso.AlumnoData;
 import universidad.acceso.Conexion;
 import universidad.acceso.InscripcionData;
+import universidad.acceso.MateriaData;
 import universidad.entidades.Alumno;
 import universidad.entidades.Inscripcion;
 import universidad.entidades.Materia;
@@ -29,17 +31,22 @@ public class Universidad {
      System.out.println("dni "+alumnoEncontrado.getDni());
      System.out.println("apellido "+alumnoEncontrado.getApellido());
     */
-    Materia mat= new Materia("Topografia", 2, true);
-    Alumno ari = new Alumno(1,40678534,"Bartellini", "Ari", LocalDate.of(1998, Month.JANUARY,8),true);
+   // Materia mat= new Materia("Topografia", 2, true);
+   // Alumno ari = new Alumno(1,40678534,"Bartellini", "Ari", LocalDate.of(1998, Month.JANUARY,8),true);
     uni.main(args);
-  Inscripcion ins = new Inscripcion(ari, mat);
-  InscripcionData insDa = new InscripcionData();
-  insDa.guardarInscripcion(ins);
+ // Inscripcion ins = new Inscripcion(ari, mat, 3);
+  //InscripcionData insDa = new InscripcionData();
+  //insDa.guardarInscripcion(ins);
   
-  
+  AlumnoData ad = new AlumnoData();
+  MateriaData md = new MateriaData();
+  InscripcionData id = new InscripcionData();
             
+    Alumno ari=ad.buscarAlumnoPorId(1);
+    Materia mate= md.buscarMateriaPorId(2);
     
-    
+    Inscripcion insc = new Inscripcion(ari,mate,9);
+    id.guardarInscripcion(insc);
     }
     
 }

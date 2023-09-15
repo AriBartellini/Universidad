@@ -48,11 +48,21 @@ public class Universidad {
     Inscripcion insc = new Inscripcion(ari,mate,9);
     //id.guardarInscripcion(insc);
     //id.actualizarNota(1, 2, 7);
-    id.borrarInscripcionMateriaAlumno(1, 2);
-    
-    
+    //id.borrarInscripcionMateriaAlumno(1, 2);
+ /* 
+        for (Inscripcion inscripcion:id.obtenerInscripciones()) {
+            System.out.println("id "+inscripcion.getIdInscripcion());
+            System.out.println("apellido "+ inscripcion.getAlumno().getApellido());
+            System.out.println("Materia "+ inscripcion.getMateria().getNombre());
+            
+            
+        }
+    */
+ 
+    for(Materia materia: id.obtenerMateriasNoCursadas(2))
+            System.out.println("materia: "+ materia.getNombre());
     }
-    
+ 
 }
 
 /*

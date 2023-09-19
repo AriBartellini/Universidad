@@ -40,7 +40,6 @@ public class Alumno {
     }
 
     
-
     public int getIdAlumno() {
         return idAlumno;
     }
@@ -83,7 +82,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return  idAlumno +" - "+ apellido +", " +  nombre +" "+ ", activo=" + activo ;
+        return  idAlumno +" - "+ apellido +", " +  nombre;
     }
 
     public static class Data {

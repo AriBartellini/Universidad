@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javax.swing.JOptionPane;
 import universidad.entidades.Alumno;
@@ -31,9 +30,7 @@ public class InscripcionData {
 
     public void guardarInscripcion(Inscripcion ins) {
         String sql = "INSERT INTO inscripcion (idAlumno, idMateria, nota) VALUES (?,?,?)";
-        
-        
-
+    
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, ins.getAlumno().getIdAlumno());
@@ -149,7 +146,7 @@ public class InscripcionData {
         public List<Materia> obtenerMateriasCursadas(int idAlumno){
             ArrayList<Materia> materias= new ArrayList<>();
             String sql= "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion,"
-                    + "materia WHERE inscripcion.idMateria = materia.idMateria"
+                    + "materia WHERE inscripcion.idMateria = materia.idMateria "
                     + "AND inscripcion.idAlumno = ?;";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
@@ -193,7 +190,7 @@ public class InscripcionData {
         
         public List<Alumno> obtenerAlumnosPorMateria(int idMateria){
             ArrayList<Alumno> alumnosMateria = new ArrayList<>();
-            String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado"
+            String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado "
                     + "FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
         try {
             PreparedStatement ps= con.prepareStatement(sql);

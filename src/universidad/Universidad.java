@@ -43,9 +43,9 @@ public class Universidad {
   InscripcionData id = new InscripcionData();
             
     Alumno ari=ad.buscarAlumnoPorId(1);
-    Materia mate= md.buscarMateriaPorId(2);
+    //Materia mate= md.buscarMateriaPorId(2);
     
-    Inscripcion insc = new Inscripcion(ari,mate,9);
+    //Inscripcion insc = new Inscripcion(ari,mate,9);
     //id.guardarInscripcion(insc);
     //id.actualizarNota(1, 2, 7);
     //id.borrarInscripcionMateriaAlumno(1, 2);

@@ -191,7 +191,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private void jrbMateriasInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasMouseClicked
         borrarFilas();
-        String selectedItem = jcbAlumnos.getItemAt(1);
+        String selectedItem = jcbAlumnos.getItemAt(0);
         String[] parts = selectedItem.split(" - ");
         int idAlumno = Integer.parseInt(parts[0]);
 

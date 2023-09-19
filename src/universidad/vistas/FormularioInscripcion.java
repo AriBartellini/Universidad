@@ -162,6 +162,12 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
+        int seleccion = jcbAlumnos.getSelectedIndex();
+        //String seleccion=jcbAlumnos.getSelectedItem().toString();
+        int seleccionFinal;
+        
+        
+        
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jrbMateriasNoInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasMouseClicked
@@ -174,16 +180,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jrbMateriasInscriptasMouseClicked
 
-    private void cargarCombo() {
-        AlumnoData alumnos = new AlumnoData();
-        List lista = alumnos.listarAlumnos();
-
-        for (int indice = 0; indice < lista.size(); indice++) {
-            jcbAlumnos.addItem(String.valueOf(lista.get(indice)));
-
-        }
-
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -212,5 +209,15 @@ void armarCabecera() {
 
             modelo.removeRow(f);
         }
+    }
+    private void cargarCombo() {
+        AlumnoData alumnos = new AlumnoData();
+        List lista = alumnos.listarAlumnos();
+
+        for (int indice = 0; indice < lista.size(); indice++) {
+            jcbAlumnos.addItem(String.valueOf(lista.get(indice)));
+
+        }
+
     }
 }

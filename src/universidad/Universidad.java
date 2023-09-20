@@ -5,15 +5,11 @@ import java.time.LocalDate;
 import java.time.Month;
 import universidad.acceso.AlumnoData;
 */
-import java.time.LocalDate;
-import java.time.Month;
 import universidad.acceso.AlumnoData;
 import universidad.acceso.Conexion;
 import universidad.acceso.InscripcionData;
 import universidad.acceso.MateriaData;
 import universidad.entidades.Alumno;
-import universidad.entidades.Inscripcion;
-import universidad.entidades.Materia;
 import universidad.vistas.uni;
 
 //import universidad.entidades.Alumno;
@@ -59,8 +55,8 @@ public class Universidad {
         }
     */
  
-    for(Materia materia: id.obtenerMateriasNoCursadas(2))
-            System.out.println("materia: "+ materia.getNombre());
+  //  for(Materia materia: id.obtenerMateriasNoCursadas(2))
+       //     System.out.println("materia: "+ materia.getNombre());
     }
  
 }

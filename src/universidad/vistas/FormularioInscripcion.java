@@ -183,6 +183,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbMateriasNoInscriptasMouseClicked
 
     private void jrbMateriasInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasMouseClicked
+      //acá habria que agregar un while con alguna condicion que mientras este seleccionado cuando cambie de alumnos busque ootra vez
         borrarFilas();
         String selectedItem = jcbAlumnos.getItemAt(0);
         String[] parts = selectedItem.split(" - ");

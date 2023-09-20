@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidad.vistas;
 
 import java.util.List;
@@ -12,17 +8,10 @@ import universidad.acceso.AlumnoData;
 import universidad.acceso.InscripcionData;
 import universidad.entidades.Materia;
 
-/**
- *
- * @author mauriPC
- */
 public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private final DefaultTableModel modelo = new DefaultTableModel();
 
-    /**
-     * Creates new form FormularioInscripcion
-     */
     public FormularioInscripcion() {
         initComponents();
         cargarCombo();
@@ -88,8 +77,18 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtMaterias);
 
         jbInscribir.setText("Inscribir");
+        jbInscribir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbInscribirMouseClicked(evt);
+            }
+        });
 
-        jbAnularInscripcion.setText("Anular Inscripción");
+        jbAnularInscripcion.setText("Eliminar Inscripción");
+        jbAnularInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbAnularInscripcionMouseClicked(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +121,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jbInscribir)
-                                    .addGap(43, 43, 43)
+                                    .addGap(33, 33, 33)
                                     .addComponent(jbAnularInscripcion)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jbSalir))
@@ -133,7 +132,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel2)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,11 +164,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
-        int seleccion = jcbAlumnos.getSelectedIndex();
-        //String seleccion=jcbAlumnos.getSelectedItem().toString();
-        int seleccionFinal;
-
-
+      
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jrbMateriasNoInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasMouseClicked
@@ -185,8 +180,6 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         lista.forEach((elemento) -> {
             modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
         });
-
-
     }//GEN-LAST:event_jrbMateriasNoInscriptasMouseClicked
 
     private void jrbMateriasInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasMouseClicked
@@ -204,6 +197,18 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jrbMateriasInscriptasMouseClicked
 
+    private void jbInscribirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbInscribirMouseClicked
+        //De donde traigo el alumno y la materia? De donde saco la nota y donde la exhibo?
+         //construir incripcion(alumno,materia,nota)
+        //llamar a inscripcionData.guardarInscripcion(inscripcion)
+    }//GEN-LAST:event_jbInscribirMouseClicked
+
+    private void jbAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAnularInscripcionMouseClicked
+        
+        // borrarInscripcionMateriaAlumno(int idAlumno, int idMateria)
+        //este metodo es de inscripcionData, pero no necesita un objeto inscripcion?
+    }//GEN-LAST:event_jbAnularInscripcionMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -218,7 +223,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrbMateriasNoInscriptas;
     private javax.swing.JTable jtMaterias;
     // End of variables declaration//GEN-END:variables
-void armarCabecera() {
+private void armarCabecera() {
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("año");

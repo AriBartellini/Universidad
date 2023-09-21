@@ -48,8 +48,32 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
         }
- 
     }
+    /**
+     *
+     * @param idAlumno
+     * @param idMateria
+     */
+    public void  guardarInscripcion(int idAlumno, int idMateria) {
+        String sql = "INSERT INTO inscripcion (idAlumno, idMateria, nota) VALUES (?,?,?)";
+    
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
+            ps.setObject(3, null);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                 JOptionPane.showMessageDialog(null, "Inscripcion cargada correctamente");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
+        }
+    }
+    
     public void actualizarNota(int idAlumno, int idMateria, double nota){
             String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? and idMateria = ?";
         try {

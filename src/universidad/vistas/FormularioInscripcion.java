@@ -1,7 +1,7 @@
 
 package universidad.vistas;
 
-import java.awt.event.ActionEvent;
+
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
@@ -206,13 +206,22 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbMateriasInscriptasMouseClicked
 
     private void jbInscribirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbInscribirMouseClicked
-        //De donde traigo el alumno y la materia? De donde saco la nota y donde la exhibo?
-         //construir incripcion(alumno,materia,nota)
-        //llamar a inscripcionData.guardarInscripcion(inscripcion)
+             //Seleccion del alumno
+        String selectedItem = (String) jcbAlumnos.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        //seleccionar materia
+        int filaSelec=jtMaterias.getSelectedRow();
+        int idMateria = (int)jtMaterias.getValueAt(filaSelec, 0);
+        //llamar a inscriocion Data
+        InscripcionData id = new InscripcionData();
+        id.guardarInscripcion(idAlumno, idMateria);
+        
+        
     }//GEN-LAST:event_jbInscribirMouseClicked
 
     private void jbAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAnularInscripcionMouseClicked
-        
+ 
         // borrarInscripcionMateriaAlumno(int idAlumno, int idMateria)
         //este metodo es de inscripcionData, pero no necesita un objeto inscripcion?
     }//GEN-LAST:event_jbAnularInscripcionMouseClicked

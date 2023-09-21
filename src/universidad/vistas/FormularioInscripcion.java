@@ -221,9 +221,17 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInscribirMouseClicked
 
     private void jbAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAnularInscripcionMouseClicked
- 
-        // borrarInscripcionMateriaAlumno(int idAlumno, int idMateria)
-        //este metodo es de inscripcionData, pero no necesita un objeto inscripcion?
+        //Seleccion del alumno
+        String selectedItem = (String) jcbAlumnos.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        //seleccionar materia
+        int filaSelec=jtMaterias.getSelectedRow();
+        int idMateria = (int)jtMaterias.getValueAt(filaSelec, 0);
+        //llamar a InscripcionData
+          InscripcionData id = new InscripcionData();
+          id.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
+        
     }//GEN-LAST:event_jbAnularInscripcionMouseClicked
 
     private void jrbMateriasNoInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasStateChanged

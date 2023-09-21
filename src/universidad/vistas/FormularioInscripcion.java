@@ -1,6 +1,7 @@
 
 package universidad.vistas;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
@@ -11,11 +12,12 @@ import universidad.entidades.Materia;
 public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel();
-
+    ButtonGroup grupoRb = new ButtonGroup();
+        
+    
     public FormularioInscripcion() {
         initComponents();
         cargarCombo();
-        ButtonGroup grupoRb = new ButtonGroup();
         grupoRb.add(jrbMateriasInscriptas);
         grupoRb.add(jrbMateriasNoInscriptas);
         armarCabecera();
@@ -46,20 +48,46 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Seleccione un alumno:");
 
+        jcbAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbAlumnosMouseClicked(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel2.setText("Listado de materias");
 
         jrbMateriasInscriptas.setText("Materias Inscriptas");
+        jrbMateriasInscriptas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jrbMateriasInscriptasStateChanged(evt);
+            }
+        });
         jrbMateriasInscriptas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jrbMateriasInscriptasMouseClicked(evt);
             }
         });
+        jrbMateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMateriasInscriptasActionPerformed(evt);
+            }
+        });
 
         jrbMateriasNoInscriptas.setText("Materias no inscriptas");
+        jrbMateriasNoInscriptas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jrbMateriasNoInscriptasStateChanged(evt);
+            }
+        });
         jrbMateriasNoInscriptas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jrbMateriasNoInscriptasMouseClicked(evt);
+            }
+        });
+        jrbMateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMateriasNoInscriptasActionPerformed(evt);
             }
         });
 
@@ -168,33 +196,12 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jrbMateriasNoInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasMouseClicked
-        borrarFilas();
-
-        String selectedItem = jcbAlumnos.getItemAt(1);
-        String[] parts = selectedItem.split(" - ");
-        int idAlumno = Integer.parseInt(parts[0]);
-
-        InscripcionData id = new InscripcionData();
-        List<Materia> lista = id.obtenerMateriasNoCursadas(idAlumno);
-        jtMaterias.setModel(modelo);
-        lista.forEach((elemento) -> {
-            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
-        });
+        
     }//GEN-LAST:event_jrbMateriasNoInscriptasMouseClicked
 
     private void jrbMateriasInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasMouseClicked
       //acá habria que agregar un while con alguna condicion que mientras este seleccionado cuando cambie de alumnos busque ootra vez
-        borrarFilas();
-        String selectedItem = jcbAlumnos.getItemAt(0);
-        String[] parts = selectedItem.split(" - ");
-        int idAlumno = Integer.parseInt(parts[0]);
-
-        InscripcionData id = new InscripcionData();
-        List<Materia> lista = id.obtenerMateriasCursadas(idAlumno);
-        jtMaterias.setModel(modelo);
-        lista.forEach((elemento) -> {
-            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
-        });
+        
 
     }//GEN-LAST:event_jrbMateriasInscriptasMouseClicked
 
@@ -209,6 +216,48 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         // borrarInscripcionMateriaAlumno(int idAlumno, int idMateria)
         //este metodo es de inscripcionData, pero no necesita un objeto inscripcion?
     }//GEN-LAST:event_jbAnularInscripcionMouseClicked
+
+    private void jrbMateriasNoInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasStateChanged
+        
+    }//GEN-LAST:event_jrbMateriasNoInscriptasStateChanged
+
+    private void jrbMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasActionPerformed
+        borrarFilas();
+        
+        String selectedItem = jcbAlumnos.getItemAt(0);
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+
+        InscripcionData id = new InscripcionData();
+        List<Materia> lista = id.obtenerMateriasCursadas(idAlumno);
+        jtMaterias.setModel(modelo);
+        lista.forEach((elemento) -> {
+            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
+        });
+    }//GEN-LAST:event_jrbMateriasInscriptasActionPerformed
+
+    private void jrbMateriasInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasStateChanged
+        //no es
+    }//GEN-LAST:event_jrbMateriasInscriptasStateChanged
+
+    private void jrbMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasActionPerformed
+        borrarFilas();
+
+        String selectedItem = jcbAlumnos.getItemAt(1);
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+
+        InscripcionData id = new InscripcionData();
+        List<Materia> lista = id.obtenerMateriasNoCursadas(idAlumno);
+        jtMaterias.setModel(modelo);
+        lista.forEach((elemento) -> {
+            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
+        });
+    }//GEN-LAST:event_jrbMateriasNoInscriptasActionPerformed
+
+    private void jcbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseClicked
+        limpiarRb();
+    }//GEN-LAST:event_jcbAlumnosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,4 +298,10 @@ private void armarCabecera() {
         }
 
     }
+    private void limpiarRb(){
+        borrarFilas();
+        grupoRb.clearSelection();
+    }
+    
+
 }

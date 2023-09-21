@@ -143,6 +143,9 @@ public class InscripcionData {
         return cursadas;
         }
         
+        
+        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         public List<Materia> obtenerMateriasCursadas(int idAlumno){
             ArrayList<Materia> materias= new ArrayList<>();
             String sql= "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion,"
@@ -165,6 +168,9 @@ public class InscripcionData {
         }
         return materias;
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        
         
         public List<Materia> obtenerMateriasNoCursadas(int idAlumno){
             ArrayList<Materia> materias= new ArrayList<>();

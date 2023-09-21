@@ -231,18 +231,19 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbMateriasNoInscriptasStateChanged
 
     private void jrbMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasActionPerformed
-        borrarFilas();
+actualizarTabla();
+// borrarFilas();
         
-        String selectedItem = (String) jcbAlumnos.getSelectedItem();
-        String[] parts = selectedItem.split(" - ");
-        int idAlumno = Integer.parseInt(parts[0]);
+        //String selectedItem = (String) jcbAlumnos.getSelectedItem();
+        //String[] parts = selectedItem.split(" - ");
+        //int idAlumno = Integer.parseInt(parts[0]);
 
-        InscripcionData id = new InscripcionData();
-        List<Materia> lista = id.obtenerMateriasCursadas(idAlumno);
-        jtMaterias.setModel(modelo);
-        lista.forEach((elemento) -> {
-            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
-        });
+//        InscripcionData id = new InscripcionData();
+//        List<Materia> lista = id.obtenerMateriasCursadas(idAlumno);
+//        jtMaterias.setModel(modelo);
+//        lista.forEach((elemento) -> {
+//            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
+//        });
     }//GEN-LAST:event_jrbMateriasInscriptasActionPerformed
 
     private void jrbMateriasInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasStateChanged
@@ -250,18 +251,20 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbMateriasInscriptasStateChanged
 
     private void jrbMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasActionPerformed
-        borrarFilas();
+actualizarTabla();
 
-        String selectedItem =(String) jcbAlumnos.getSelectedItem();
-        String[] parts = selectedItem.split(" - ");
-        int idAlumno = Integer.parseInt(parts[0]);
-
-        InscripcionData id = new InscripcionData();
-        List<Materia> lista = id.obtenerMateriasNoCursadas(idAlumno);
-        jtMaterias.setModel(modelo);
-        lista.forEach((elemento) -> {
-            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
-        });
+//        borrarFilas();
+//
+//        String selectedItem =(String) jcbAlumnos.getSelectedItem();
+//        String[] parts = selectedItem.split(" - ");
+//        int idAlumno = Integer.parseInt(parts[0]);
+//
+//        InscripcionData id = new InscripcionData();
+//        List<Materia> lista = id.obtenerMateriasNoCursadas(idAlumno);
+//        jtMaterias.setModel(modelo);
+//        lista.forEach((elemento) -> {
+//            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
+//        });
     }//GEN-LAST:event_jrbMateriasNoInscriptasActionPerformed
 
     private void jcbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseClicked
@@ -313,4 +316,29 @@ private void armarCabecera() {
     }
     
 
+private void actualizarTabla(){
+    borrarFilas();
+        
+        String selectedItem = (String) jcbAlumnos.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        
+    if(jrbMateriasInscriptas.isSelected()){
+        InscripcionData id = new InscripcionData();
+        List<Materia> lista = id.obtenerMateriasCursadas(idAlumno);
+        jtMaterias.setModel(modelo);
+        lista.forEach((elemento) -> {
+            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
+        });
+    } else if(jrbMateriasNoInscriptas.isSelected()){
+        InscripcionData id = new InscripcionData();
+        List<Materia> lista = id.obtenerMateriasNoCursadas(idAlumno);
+        jtMaterias.setModel(modelo);
+        lista.forEach((elemento) -> {
+            modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
+        });
+    }
+    
+}    
+    
 }

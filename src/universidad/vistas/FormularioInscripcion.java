@@ -224,7 +224,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private void jrbMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasActionPerformed
         borrarFilas();
         
-        String selectedItem = jcbAlumnos.getItemAt(0);
+        String selectedItem = (String) jcbAlumnos.getSelectedItem();
         String[] parts = selectedItem.split(" - ");
         int idAlumno = Integer.parseInt(parts[0]);
 
@@ -243,7 +243,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private void jrbMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasActionPerformed
         borrarFilas();
 
-        String selectedItem = jcbAlumnos.getItemAt(1);
+        String selectedItem =(String) jcbAlumnos.getSelectedItem();
         String[] parts = selectedItem.split(" - ");
         int idAlumno = Integer.parseInt(parts[0]);
 

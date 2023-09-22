@@ -21,9 +21,7 @@ public class InscripcionData {
     private Connection con = null;
     private MateriaData md= new MateriaData();
     private AlumnoData ad= new AlumnoData();
-    //private MateriaData matData;
-    //private AlumnoData aluData;
-
+    
     public InscripcionData() {
         con = Conexion.buscarConexion();
     }
@@ -49,11 +47,7 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
         }
     }
-    /**
-     *
-     * @param idAlumno
-     * @param idMateria
-     */
+    
     public void  guardarInscripcion(int idAlumno, int idMateria) {
         String sql = "INSERT INTO inscripcion (idAlumno, idMateria, nota) VALUES (?,?,?)";
     
@@ -166,10 +160,7 @@ public class InscripcionData {
         }
         return cursadas;
         }
-        
-        
-        
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       
         public List<Materia> obtenerMateriasCursadas(int idAlumno){
             ArrayList<Materia> materias= new ArrayList<>();
             String sql= "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion,"
@@ -192,10 +183,8 @@ public class InscripcionData {
         }
         return materias;
         }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        
-        
+
         public List<Materia> obtenerMateriasNoCursadas(int idAlumno){
             ArrayList<Materia> materias= new ArrayList<>();
             String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria not in"

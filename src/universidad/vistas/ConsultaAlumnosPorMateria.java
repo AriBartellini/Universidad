@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidad.vistas;
 
 import java.util.List;
@@ -32,7 +27,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         jcbMateria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMateria = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setTitle("Listado por materia");
@@ -43,11 +38,6 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         jcbMateria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbMateriaItemStateChanged(evt);
-            }
-        });
-        jcbMateria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jcbMateriaMouseClicked(evt);
             }
         });
 
@@ -64,15 +54,10 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtMateria);
 
-        jButton2.setText("Salir");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbSalir.setText("Salir");
+        jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbSalirMouseClicked(evt);
             }
         });
 
@@ -88,7 +73,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jbSalir, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -114,35 +99,26 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jbSalir)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jcbMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbMateriaMouseClicked
-        //este no va
-    }//GEN-LAST:event_jcbMateriaMouseClicked
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
         this.dispose();
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_jbSalirMouseClicked
 
     private void jcbMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMateriaItemStateChanged
-            actualizarTabla();
-        
+        actualizarTabla();
+
     }//GEN-LAST:event_jcbMateriaItemStateChanged
     private void cargarCombo() {
         MateriaData materia = new MateriaData();
         List<Materia> lista = materia.listarMaterias();
         for (int indice = 0; indice < lista.size(); indice++) {
             jcbMateria.addItem(String.valueOf(lista.get(indice)));
-
         }
     }
 
@@ -155,14 +131,14 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
     }
 
     private void borrarFilas() {
-        int filas = jtMateria.getRowCount();
-        for (int f = filas - 1; f >= 0; f--) {
-            modelo.removeRow(f);
+        int filas = modelo.getRowCount();
+        while (filas > 0) {
+            modelo.removeRow(--filas);
         }
     }
 
     private void actualizarTabla() {
-       // borrarFilas();
+        borrarFilas();
         String selectedItem = (String) jcbMateria.getSelectedItem();
         String[] parts = selectedItem.split(" - ");
         int idMateria = Integer.parseInt(parts[0]);
@@ -172,14 +148,13 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         lista.forEach((elemento) -> {
             modelo.addRow(new Object[]{idMateria, elemento.getDni(), elemento.getNombre(), elemento.getApellido()});
         });
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<String> jcbMateria;
     private javax.swing.JTable jtMateria;
     // End of variables declaration//GEN-END:variables

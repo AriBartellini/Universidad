@@ -243,7 +243,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrbMateriasNoInscriptas;
     private javax.swing.JTable jtMaterias;
     // End of variables declaration//GEN-END:variables
-private void armarCabecera() {
+
+    private void armarCabecera() {
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("año");

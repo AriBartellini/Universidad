@@ -69,6 +69,11 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtNotas);
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbGuardarMouseClicked(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -134,8 +139,17 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
        String[] elementos = alumnoSeleccionado.split(" ");      
        int num =Integer.parseInt(elementos[0]) ;
        cargarDatos(num);  
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jcbAlumnoItemStateChanged
+
+    private void jbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbGuardarMouseClicked
+        int filaSelec = jtNotas.getSelectedRow();
+        int idMateria = (int) jtNotas.getValueAt(filaSelec, 0);
+        int idAlumno = (int) jtNotas.getValueAt(filaSelec, 3);
+        int nota = (int) jtNotas.getValueAt(filaSelec, 3);
+        //actualizarNota(int idAlumno, int idMateria, double nota)
+        
+    }//GEN-LAST:event_jbGuardarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,5 +197,5 @@ private void cargarDatos(int i){
         modelo.addRow(new Object[]{elementos[0],elementos[1]+" "+elementos[2],elementos[3]+" "+elementos[4],elementos[5]});             
    
          }}
-         
+  
 }

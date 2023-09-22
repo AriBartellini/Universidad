@@ -194,6 +194,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
+        try{
         int dni = Integer.parseInt(jtfDocumento.getText());
         AlumnoData alumno = new AlumnoData();
         Alumno alu = alumno.buscarAlumnoPorDni(dni);
@@ -201,15 +202,17 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jtfNombre.setText(alu.getNombre());
         jrbEstado.setSelected(alu.isActivo());
         jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
-
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "DNI invalido");
+            limpiarCampos();
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "DNI invalido");
+            limpiarCampos();
+        }
     }//GEN-LAST:event_jbBuscarMouseClicked
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        jtfDocumento.setText("");
-        jtfApellido.setText("");
-        jtfNombre.setText("");
-        jrbEstado.setSelected(false);
-        jdFechaNacimiento.setDate(null);
+        limpiarCampos();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
@@ -253,4 +256,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfDocumento;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
+
+    public void limpiarCampos(){
+        jtfDocumento.setText("");
+        jtfApellido.setText("");
+        jtfNombre.setText("");
+        jrbEstado.setSelected(false);
+        jdFechaNacimiento.setDate(null);
+    }
 }

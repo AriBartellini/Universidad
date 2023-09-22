@@ -6,20 +6,25 @@
 package universidad.vistas;
 
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import universidad.acceso.AlumnoData;
+import universidad.acceso.InscripcionData;
 
 /**
  *
  * @author mauriPC
  */
 public class ActualizacionNotas extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form ActualizacionNotas
      */
     public ActualizacionNotas() {
         initComponents();
         cargarCombo();
+        armarLista();
+       Uni univ = new Uni();    
+       univ.centrarInternalFrame(this);
     }
 
     /**
@@ -43,6 +48,12 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         jLabel1.setText("Carga de notas");
 
         jLabel2.setText("Seleccione un alumno:");
+
+        jcbAlumno.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbAlumnoItemStateChanged(evt);
+            }
+        });
 
         jtNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,6 +128,15 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jcbAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbAlumnoItemStateChanged
+        String alumnoSeleccionado=(String) jcbAlumno.getSelectedItem();       
+       // Utilizamos el método split() para dividir la cadena en elementos
+       String[] elementos = alumnoSeleccionado.split(" ");      
+       int num =Integer.parseInt(elementos[0]) ;
+       cargarDatos(num);  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbAlumnoItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -138,4 +158,30 @@ private void cargarCombo(){
 
         
     }
+private void armarLista(){
+        modelo.addColumn("ID");        
+        modelo.addColumn("Alumno");
+        modelo.addColumn("Materia");        
+        modelo.addColumn("Nota");
+        jtNotas.setModel(modelo);
+    }
+private void cargarDatos(int i){
+        modelo.setRowCount(0);
+        
+        InscripcionData inscripcion=new InscripcionData();
+       
+        //List lista=alumnos.listarAlumnos();    
+        List lista=inscripcion.obtenerInscripcionesPorAlumno(i); 
+        
+        for(int indice = 0;indice<lista.size();indice++){
+        
+        String cadena = String.valueOf(lista.get(indice));
+        
+        // Utilizamos el método split() para dividir la cadena en elementos
+        String[] elementos = cadena.split(" ");
+        // Iteramos a través del arreglo de elementos y los imprimimos           
+        modelo.addRow(new Object[]{elementos[0],elementos[1]+" "+elementos[2],elementos[3]+" "+elementos[4],elementos[5]});             
+   
+         }}
+         
 }

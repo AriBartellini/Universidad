@@ -5,6 +5,9 @@
  */
 package universidad.vistas;
 
+import java.util.List;
+import universidad.acceso.AlumnoData;
+
 /**
  *
  * @author mauriPC
@@ -16,6 +19,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
      */
     public ActualizacionNotas() {
         initComponents();
+        cargarCombo();
     }
 
     /**
@@ -123,4 +127,15 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbAlumno;
     private javax.swing.JTable jtNotas;
     // End of variables declaration//GEN-END:variables
+private void cargarCombo(){
+        AlumnoData alumnos =new AlumnoData();
+        List lista=alumnos.listarAlumnos();         
+            
+        for(int indice = 0;indice<lista.size();indice++){
+            jcbAlumno.addItem(String.valueOf(lista.get(indice)));            
+   
+         }
+
+        
+    }
 }

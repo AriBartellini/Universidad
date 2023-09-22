@@ -10,7 +10,7 @@ import universidad.acceso.Conexion;
 import universidad.acceso.InscripcionData;
 import universidad.acceso.MateriaData;
 import universidad.entidades.Alumno;
-import universidad.vistas.uni;
+import universidad.vistas.Uni;
 
 //import universidad.entidades.Alumno;
 
@@ -29,7 +29,7 @@ public class Universidad {
     */
    // Materia mat= new Materia("Topografia", 2, true);
    // Alumno ari = new Alumno(1,40678534,"Bartellini", "Ari", LocalDate.of(1998, Month.JANUARY,8),true);
-    uni.main(args);
+    Uni.main(args);
  // Inscripcion ins = new Inscripcion(ari, mat, 3);
   //InscripcionData insDa = new InscripcionData();
   //insDa.guardarInscripcion(ins);

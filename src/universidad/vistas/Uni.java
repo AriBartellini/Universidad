@@ -2,9 +2,9 @@ package universidad.vistas;
 
 import javax.swing.JInternalFrame;
 
-public class uni extends javax.swing.JFrame {
+public class Uni extends javax.swing.JFrame {
 
-    public uni() {
+    public Uni() {
         initComponents();
         this.setLocationRelativeTo(null); //centramos la ventana
     }
@@ -199,20 +199,21 @@ public class uni extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Uni.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new uni().setVisible(true);
+                new Uni().setVisible(true);
             }
         });
     }
@@ -233,13 +234,13 @@ public class uni extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void centrarInternalFrame(JInternalFrame internalFrame) {
-        int width = escritorio.getWidth();
-        int height = escritorio.getHeight();
-        int frameWidth = internalFrame.getWidth();
-        int frameHeight = internalFrame.getHeight();
+        int ancho = escritorio.getWidth();
+        int alto = escritorio.getHeight();
+        int anchoFrame = internalFrame.getWidth();
+        int altoFrame = internalFrame.getHeight();
 
-        int x = (width - frameWidth) / 2;
-        int y = (height - frameHeight) / 2;
+        int x = (ancho - anchoFrame) / 2;
+        int y = (alto - altoFrame) / 2;
 
         internalFrame.setLocation(x, y);
     }

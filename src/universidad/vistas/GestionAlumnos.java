@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidad.vistas;
-
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -12,14 +6,16 @@ import java.time.ZoneId;
 import javax.swing.JOptionPane;
 import universidad.acceso.AlumnoData;
 import universidad.entidades.Alumno;
-import universidad.vistas.uni;
+import universidad.vistas.Uni;
 
 public class GestionAlumnos extends javax.swing.JInternalFrame {
 
-
     public GestionAlumnos() {
         initComponents();
-        
+
+        Uni univ = new Uni();
+        univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
+
     }
 
     @SuppressWarnings("unchecked")
@@ -179,7 +175,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-      
+
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -187,55 +183,55 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-    int dni=Integer.parseInt( jtfDocumento.getText());
-    String nombre= jtfNombre.getText();
-    String apellido= jtfApellido.getText();
-    LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    Boolean estado = jrbEstado.isSelected();
-    Alumno alu= new Alumno(dni,apellido,nombre, fechaNacimiento , estado);
-    AlumnoData alumno = new AlumnoData();
-    alumno.guardarAlumno(alu);
+        int dni = Integer.parseInt(jtfDocumento.getText());
+        String nombre = jtfNombre.getText();
+        String apellido = jtfApellido.getText();
+        LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Boolean estado = jrbEstado.isSelected();
+        Alumno alu = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
+        AlumnoData alumno = new AlumnoData();
+        alumno.guardarAlumno(alu);
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
         int dni = Integer.parseInt(jtfDocumento.getText());
-      AlumnoData alumno = new AlumnoData();
-      Alumno alu = alumno.buscarAlumnoPorDni(dni);
-       jtfApellido.setText(alu.getApellido());
-       jtfNombre.setText(alu.getNombre());
-       jrbEstado.setSelected(alu.isActivo());
-      jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
-       
+        AlumnoData alumno = new AlumnoData();
+        Alumno alu = alumno.buscarAlumnoPorDni(dni);
+        jtfApellido.setText(alu.getApellido());
+        jtfNombre.setText(alu.getNombre());
+        jrbEstado.setSelected(alu.isActivo());
+        jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
+
     }//GEN-LAST:event_jbBuscarMouseClicked
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-jtfDocumento.setText("");
-jtfApellido.setText("");
-jtfNombre.setText("");
-jrbEstado.setSelected(false);
-jdFechaNacimiento.setDate(null);
+        jtfDocumento.setText("");
+        jtfApellido.setText("");
+        jtfNombre.setText("");
+        jrbEstado.setSelected(false);
+        jdFechaNacimiento.setDate(null);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-    int dni=Integer.parseInt( jtfDocumento.getText());
-    AlumnoData alumno = new AlumnoData();
-    
-    int respuesta = JOptionPane.showConfirmDialog(
+        int dni = Integer.parseInt(jtfDocumento.getText());
+        AlumnoData alumno = new AlumnoData();
+
+        int respuesta = JOptionPane.showConfirmDialog(
+                GestionAlumnos.this,
+                "¿Estás seguro de que deseas eliminar al alumno con dni: " + "'" + dni + "'",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (respuesta == JOptionPane.YES_OPTION) {
+            alumno.eliminarAlumnoPorDni(dni);
+        } else {
+            JOptionPane.showMessageDialog(
                     GestionAlumnos.this,
-                    "¿Estás seguro de que deseas eliminar al alumno con dni: "+"'"+dni+"'",
-                    "Confirmación",
-                    JOptionPane.YES_NO_OPTION
-                );
-    if (respuesta == JOptionPane.YES_OPTION) {
-                    alumno.eliminarAlumnoPorDni(dni);
-                } else {
-                    JOptionPane.showMessageDialog(
-                        GestionAlumnos.this,
-                        "Operación cancelada",
-                        "Información",
-                        JOptionPane.INFORMATION_MESSAGE
-                    );
-    }
+                    "Operación cancelada",
+                    "Información",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
 

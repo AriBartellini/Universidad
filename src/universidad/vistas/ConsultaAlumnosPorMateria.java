@@ -146,7 +146,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         InscripcionData id = new InscripcionData();
         List<Alumno> lista = id.obtenerAlumnosPorMateria(idMateria);
         lista.forEach((elemento) -> {
-            modelo.addRow(new Object[]{idMateria, elemento.getDni(), elemento.getNombre(), elemento.getApellido()});
+            modelo.addRow(new Object[]{elemento.getIdAlumno(), elemento.getDni(), elemento.getNombre(), elemento.getApellido()});
         });
     }
 

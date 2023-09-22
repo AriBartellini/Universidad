@@ -53,6 +53,11 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                 jcbAlumnosMouseClicked(evt);
             }
         });
+        jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnosActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel2.setText("Listado de materias");
@@ -278,6 +283,10 @@ actualizarTabla();
     private void jcbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseClicked
         limpiarRb();
     }//GEN-LAST:event_jcbAlumnosMouseClicked
+
+    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbAlumnosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

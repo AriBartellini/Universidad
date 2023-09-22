@@ -143,11 +143,20 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbAlumnoItemStateChanged
 
     private void jbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbGuardarMouseClicked
-        int filaSelec = jtNotas.getSelectedRow();
-        int idMateria = (int) jtNotas.getValueAt(filaSelec, 0);
-        int idAlumno = (int) jtNotas.getValueAt(filaSelec, 3);
-        int nota = (int) jtNotas.getValueAt(filaSelec, 3);
-        //actualizarNota(int idAlumno, int idMateria, double nota)
+        
+        InscripcionData ins=new InscripcionData();
+        int filaSelec =(int) jtNotas.getSelectedRow();
+        int idMateria = Integer.parseInt((String)jtNotas.getValueAt(filaSelec, 0)); 
+        
+        
+        String selectedItem = (String) jcbAlumno.getSelectedItem();
+        String[] parts = selectedItem.split(" ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        
+        double nota = Double.parseDouble((String)jtNotas.getValueAt(filaSelec, 3));
+        
+        System.out.println(idAlumno+" "+idMateria+" "+nota);
+        ins.actualizarNota(idAlumno, idMateria, nota);
         
     }//GEN-LAST:event_jbGuardarMouseClicked
 

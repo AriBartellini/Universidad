@@ -1,12 +1,15 @@
 package universidad.vistas;
 
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 
 public class Uni extends javax.swing.JFrame {
 
     public Uni() {
         initComponents();
-        this.setLocationRelativeTo(null); //centramos la ventana
+         determinarFondo();
+         this.setLocationRelativeTo(null); //centramos la ventana
     }
 
     @SuppressWarnings("unchecked")
@@ -28,7 +31,6 @@ public class Uni extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de gestion escolar");
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         escritorio.setName(""); // NOI18N
@@ -134,6 +136,7 @@ public class Uni extends javax.swing.JFrame {
     private void jmiFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioAlumnoActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
+        determinarFondo();
         GestionAlumnos ga=new GestionAlumnos();
         ga.setVisible(true);
         escritorio.add(ga);
@@ -143,16 +146,18 @@ public class Uni extends javax.swing.JFrame {
     private void jmiFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioMateriaActionPerformed
         escritorio.removeAll(); 
         escritorio.repaint();
+        determinarFondo();
         GestionMaterias gm=new GestionMaterias();
         gm.setVisible(true);
         escritorio.add(gm);
         escritorio.moveToFront(gm);
-        
+                
     }//GEN-LAST:event_jmiFormularioMateriaActionPerformed
 
     private void jmiManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManejoInscripcionesActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
+        determinarFondo();
         FormularioInscripcion fi=new FormularioInscripcion();
         fi.setVisible(true);
         escritorio.add(fi);
@@ -162,6 +167,7 @@ public class Uni extends javax.swing.JFrame {
     private void jmiManipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManipulacionNotasActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
+        determinarFondo();
         ActualizacionNotas an=new ActualizacionNotas();
         an.setVisible(true);
         escritorio.add(an);
@@ -171,6 +177,7 @@ public class Uni extends javax.swing.JFrame {
     private void jmiAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlumnosPorMateriaActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
+        determinarFondo();
         ConsultaAlumnosPorMateria cam=new ConsultaAlumnosPorMateria();
         cam.setVisible(true);
         escritorio.add(cam);
@@ -211,10 +218,8 @@ public class Uni extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Uni().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Uni().setVisible(true);
         });
     }
 
@@ -244,5 +249,16 @@ public class Uni extends javax.swing.JFrame {
 
         internalFrame.setLocation(x, y);
     }
+    
+    private void determinarFondo(){
+        JLabel fondo= new JLabel();
+        fondo.setIcon(new ImageIcon("957888_OF18H90.jpg"));
+        fondo.setBounds(0, 0, 800, 600);
+        escritorio.add(fondo);
+        escritorio.setComponentZOrder(fondo, 0);
+        fondo.setOpaque(false);
+        escritorio.setOpaque(false);
+    }
+            
 }
 

@@ -8,8 +8,8 @@ public class Uni extends javax.swing.JFrame {
 
     public Uni() {
         initComponents();
-         determinarFondo();
-         this.setLocationRelativeTo(null); //centramos la ventana
+        determinarFondo();
+        this.setLocationRelativeTo(null); //centramos la ventana
     }
 
     @SuppressWarnings("unchecked")
@@ -137,28 +137,28 @@ public class Uni extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         determinarFondo();
-        GestionAlumnos ga=new GestionAlumnos();
+        GestionAlumnos ga = new GestionAlumnos();
         ga.setVisible(true);
         escritorio.add(ga);
         escritorio.moveToFront(ga);
     }//GEN-LAST:event_jmiFormularioAlumnoActionPerformed
 
     private void jmiFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioMateriaActionPerformed
-        escritorio.removeAll(); 
+        escritorio.removeAll();
         escritorio.repaint();
         determinarFondo();
-        GestionMaterias gm=new GestionMaterias();
+        GestionMaterias gm = new GestionMaterias();
         gm.setVisible(true);
         escritorio.add(gm);
         escritorio.moveToFront(gm);
-                
+
     }//GEN-LAST:event_jmiFormularioMateriaActionPerformed
 
     private void jmiManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManejoInscripcionesActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         determinarFondo();
-        FormularioInscripcion fi=new FormularioInscripcion();
+        FormularioInscripcion fi = new FormularioInscripcion();
         fi.setVisible(true);
         escritorio.add(fi);
         escritorio.moveToFront(fi);
@@ -168,7 +168,7 @@ public class Uni extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         determinarFondo();
-        ActualizacionNotas an=new ActualizacionNotas();
+        ActualizacionNotas an = new ActualizacionNotas();
         an.setVisible(true);
         escritorio.add(an);
         escritorio.moveToFront(an);
@@ -178,7 +178,7 @@ public class Uni extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         determinarFondo();
-        ConsultaAlumnosPorMateria cam=new ConsultaAlumnosPorMateria();
+        ConsultaAlumnosPorMateria cam = new ConsultaAlumnosPorMateria();
         cam.setVisible(true);
         escritorio.add(cam);
         escritorio.moveToFront(cam);
@@ -251,14 +251,14 @@ public class Uni extends javax.swing.JFrame {
     }
     
     private void determinarFondo(){
-        JLabel fondo= new JLabel();
-        fondo.setIcon(new ImageIcon("957888_OF18H90.jpg"));
-        fondo.setBounds(0, 0, 800, 600);
-        escritorio.add(fondo);
-        escritorio.setComponentZOrder(fondo, 0);
-        fondo.setOpaque(false);
-        escritorio.setOpaque(false);
-    }
-            
+    JLabel fondo= new JLabel();
+    fondo.setIcon(new ImageIcon("fondo2.jpg"));
+    fondo.setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
+    fondo.setHorizontalAlignment(JLabel.CENTER); // Alinea la imagen en el centro
+    fondo.setVerticalAlignment(JLabel.CENTER);   // Alinea la imagen en el centro
+    escritorio.add(fondo);
+    escritorio.setComponentZOrder(fondo, 0);
+    fondo.setOpaque(false);
+    escritorio.setOpaque(false);
 }
-
+}

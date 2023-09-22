@@ -217,7 +217,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         InscripcionData id = new InscripcionData();
         id.guardarInscripcion(idAlumno, idMateria);
         
-        
+        actualizarTabla();
     }//GEN-LAST:event_jbInscribirMouseClicked
 
     private void jbAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAnularInscripcionMouseClicked
@@ -231,7 +231,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         //llamar a InscripcionData
           InscripcionData id = new InscripcionData();
           id.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
-        
+        actualizarTabla();
     }//GEN-LAST:event_jbAnularInscripcionMouseClicked
 
     private void jrbMateriasNoInscriptasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasStateChanged

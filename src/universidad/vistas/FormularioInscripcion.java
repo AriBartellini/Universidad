@@ -18,7 +18,6 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
         cargarCombo();
         armarCabecera();
-        
         grupoRb.add(jrbMateriasInscriptas);
         grupoRb.add(jrbMateriasNoInscriptas);
     }
@@ -143,7 +142,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel2)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

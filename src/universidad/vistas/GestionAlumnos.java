@@ -230,8 +230,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    
-    
     private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
         try {
             int dni = Integer.parseInt(jtfDocumento.getText());
@@ -252,13 +250,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        
-        
         int dni = Integer.parseInt(jtfDocumento.getText());
         AlumnoData alumno = new AlumnoData();
 
-        
-        
         int respuesta = JOptionPane.showConfirmDialog(
                 GestionAlumnos.this,
                 "¿seguro de que deseas dar de baja al alumno con dni: " + "'" + dni + "'",
@@ -289,28 +283,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         checkCampos();
     }//GEN-LAST:event_jtfNombreKeyReleased
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbBuscar;
-    private javax.swing.JButton jbEliminar;
-    private javax.swing.JButton jbGuardar;
-    private javax.swing.JButton jbNuevo;
-    private javax.swing.JButton jbSalir;
-    private com.toedter.calendar.JDateChooser jdFechaNacimiento;
-    private javax.swing.JRadioButton jrbEstado;
-    private javax.swing.JTextField jtfApellido;
-    private javax.swing.JTextField jtfDocumento;
-    private javax.swing.JTextField jtfNombre;
-    // End of variables declaration//GEN-END:variables
-
-    public void limpiarCampos() {
+  public void limpiarCampos() {
         jtfDocumento.setText("");
         jtfApellido.setText("");
         jtfNombre.setText("");
@@ -331,4 +304,25 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             jbGuardar.setEnabled(true);
         }
     }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
+    private com.toedter.calendar.JDateChooser jdFechaNacimiento;
+    private javax.swing.JRadioButton jrbEstado;
+    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JTextField jtfDocumento;
+    private javax.swing.JTextField jtfNombre;
+    // End of variables declaration//GEN-END:variables
+
+  
 }

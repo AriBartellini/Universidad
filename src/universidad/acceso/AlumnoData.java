@@ -189,7 +189,9 @@ public class AlumnoData {
             String sql = "UPDATE alumno SET estado = 0 WHERE dni = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
+            
             int fila = ps.executeUpdate();
+            
             if (fila == 1) {
                 JOptionPane.showMessageDialog(null, "Eliminado logico (baja) del alumno correctamente");
             }

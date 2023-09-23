@@ -170,10 +170,19 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfDocumento">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfDocumentoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfNombre">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfNombreKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfApellido">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfApellidoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

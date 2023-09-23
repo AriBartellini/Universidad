@@ -1,5 +1,8 @@
 package universidad.vistas;
 
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -14,8 +17,19 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         Uni univ = new Uni();
         univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
-
-        // proceso de checkeo de campos para habilitado de botones borrar y guardar
+        
+        jdFechaNacimiento.addPropertyChangeListener("date", new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if("date".equals(evt.getPropertyName())){
+                    java.util.Date selectedDate = (java.util.Date) evt.getNewValue();
+                    if(selectedDate != null){
+                        checkCampos();
+                    }
+                    
+                }
+            }
+        });
         
     }
 
@@ -77,6 +91,24 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
+            }
+        });
+
+        jtfDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfDocumentoKeyReleased(evt);
+            }
+        });
+
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyReleased(evt);
+            }
+        });
+
+        jtfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfApellidoKeyReleased(evt);
             }
         });
 
@@ -195,22 +227,22 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         AlumnoData alumno = new AlumnoData();
         alumno.guardarAlumno(alu);
         limpiarCampos();
+        
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    
+    
     private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
-        try{
-        int dni = Integer.parseInt(jtfDocumento.getText());
-        AlumnoData alumno = new AlumnoData();
-        Alumno alu = alumno.buscarAlumnoPorDni(dni);
-        jtfApellido.setText(alu.getApellido());
-        jtfNombre.setText(alu.getNombre());
-        jrbEstado.setSelected(alu.isActivo());
-        jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(this, "DNI invalido");
-            limpiarCampos();
-        } catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "DNI invalido");
+        try {
+            int dni = Integer.parseInt(jtfDocumento.getText());
+            AlumnoData alumno = new AlumnoData();
+            Alumno alu = alumno.buscarAlumnoPorDni(dni);
+            jtfApellido.setText(alu.getApellido());
+            jtfNombre.setText(alu.getNombre());
+            jrbEstado.setSelected(alu.isActivo());
+            jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
+        } catch (NullPointerException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "DNI invalido");
             limpiarCampos();
         }
     }//GEN-LAST:event_jbBuscarMouseClicked
@@ -220,9 +252,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        
+        
         int dni = Integer.parseInt(jtfDocumento.getText());
         AlumnoData alumno = new AlumnoData();
 
+        
+        
         int respuesta = JOptionPane.showConfirmDialog(
                 GestionAlumnos.this,
                 "¿seguro de que deseas dar de baja al alumno con dni: " + "'" + dni + "'",
@@ -240,6 +276,18 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             );
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jtfDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDocumentoKeyReleased
+        checkCampos();
+    }//GEN-LAST:event_jtfDocumentoKeyReleased
+
+    private void jtfApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidoKeyReleased
+        checkCampos();
+    }//GEN-LAST:event_jtfApellidoKeyReleased
+
+    private void jtfNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyReleased
+        checkCampos();
+    }//GEN-LAST:event_jtfNombreKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -262,11 +310,25 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
-    public void limpiarCampos(){
+    public void limpiarCampos() {
         jtfDocumento.setText("");
         jtfApellido.setText("");
         jtfNombre.setText("");
         jrbEstado.setSelected(false);
         jdFechaNacimiento.setDate(null);
+
+        jbEliminar.setEnabled(false);
+        jbGuardar.setEnabled(false);
+    }
+
+    public void checkCampos() {
+        // proceso de checkeo de campos para habilitado de botones borrar y guardar
+        if ("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null) {
+            jbEliminar.setEnabled(false);
+            jbGuardar.setEnabled(false);
+        } else {
+            jbEliminar.setEnabled(true);
+            jbGuardar.setEnabled(true);
+        }
     }
 }

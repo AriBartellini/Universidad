@@ -42,7 +42,7 @@ public class AlumnoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "avas");
+            JOptionPane.showMessageDialog(null, "alumno duplicado, inserte otro DNI");
         }
 
     }

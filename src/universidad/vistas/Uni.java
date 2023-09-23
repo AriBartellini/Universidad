@@ -1,6 +1,5 @@
 package universidad.vistas;
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;

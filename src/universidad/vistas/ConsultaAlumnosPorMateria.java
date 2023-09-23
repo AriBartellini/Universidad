@@ -14,6 +14,8 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
     public ConsultaAlumnosPorMateria() {
         this.modelo = new DefaultTableModel();
         initComponents();
+        Uni univ = new Uni();
+        univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
         cargarCombo();
         armarCabecera();
         actualizarTabla();

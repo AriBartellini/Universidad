@@ -9,6 +9,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
     public GestionMaterias() {
         initComponents();
+        
+         Uni univ = new Uni();
+        univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
     }
 
   

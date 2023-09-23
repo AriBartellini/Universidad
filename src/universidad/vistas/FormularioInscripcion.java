@@ -14,6 +14,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     public FormularioInscripcion() {
         initComponents();
+        Uni univ = new Uni();
+        univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
         cargarCombo();
         armarCabecera();
         

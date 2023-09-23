@@ -1,5 +1,6 @@
 package universidad.vistas;
 
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -252,13 +253,12 @@ public class Uni extends javax.swing.JFrame {
     
     private void determinarFondo(){
     JLabel fondo= new JLabel();
-    fondo.setIcon(new ImageIcon("fondo2.jpg"));
+    fondo.setIcon(new ImageIcon(""));
     fondo.setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
-    fondo.setHorizontalAlignment(JLabel.CENTER); // Alinea la imagen en el centro
-    fondo.setVerticalAlignment(JLabel.CENTER);   // Alinea la imagen en el centro
     escritorio.add(fondo);
     escritorio.setComponentZOrder(fondo, 0);
     fondo.setOpaque(false);
     escritorio.setOpaque(false);
+ 
 }
 }

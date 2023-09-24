@@ -231,6 +231,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        try{
         int dni = Integer.parseInt(jtfDocumento.getText());
         String nombre = jtfNombre.getText();
         String apellido = jtfApellido.getText();
@@ -241,6 +242,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         alumno.guardarAlumno(alu);
         limpiarCampos();
         checkCampos();
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "el campo 'documento' solo acepta numeros");
+            limpiarCampos();
+            
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -409,7 +415,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         Alumno alumnoModificado = new Alumno(id, dni, apellido, nombre, fechaNacimiento, estado);
         alumnoData.modificarAlumno(alumnoModificado);
         limpiarCampos();
-        buscando = false;
+        
         checkCampos();
         
     } else {

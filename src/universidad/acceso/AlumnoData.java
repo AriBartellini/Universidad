@@ -114,7 +114,7 @@ public class AlumnoData {
                 alumno.setFechaNac(rs.getDate("fechaNac").toLocalDate());
                 alumno.setActivo(true);
             } else {
-                JOptionPane.showMessageDialog(null, "No existe un alumno con ese id");
+                JOptionPane.showMessageDialog(null, "DNI no existente o dado de baja");
             }
 
             ps.close();

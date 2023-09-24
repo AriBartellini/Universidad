@@ -231,53 +231,15 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        try{
-        int dni = Integer.parseInt(jtfDocumento.getText());
-        String nombre = jtfNombre.getText();
-        String apellido = jtfApellido.getText();
-        LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        Boolean estado = jrbEstado.isSelected();
-        Alumno alu = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
-        AlumnoData alumno = new AlumnoData();
-        alumno.guardarAlumno(alu);
-        limpiarCampos();
-        checkCampos();
-        } catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "el campo 'documento' solo acepta numeros");
-            limpiarCampos();
-            
-        }
+        guardarAlumno();
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         limpiarCampos();
-        checkCampos();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        int dni = Integer.parseInt(jtfDocumento.getText());
-        AlumnoData alumno = new AlumnoData();
-
-        int respuesta = JOptionPane.showConfirmDialog(
-                GestionAlumnos.this,
-                "¿seguro de que deseas dar de baja al alumno con dni: " + "'" + dni + "'",
-                "Confirmación",
-                JOptionPane.YES_NO_OPTION
-        );
-        if (respuesta == JOptionPane.YES_OPTION) {
-            alumno.eliminarAlumnoPorDni(dni);
-            
-        } else {
-            JOptionPane.showMessageDialog(
-                    GestionAlumnos.this,
-                    "Operación cancelada",
-                    "Información",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-        }
-        
-        limpiarCampos();
-        checkCampos();
+        eliminarAlumno();
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jtfDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDocumentoKeyReleased
@@ -330,24 +292,10 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jdFechaNacimiento.setDate(null);
         buscando = false;
         checkCampos();
-//        jbEliminar.setEnabled(false);
-//        jbGuardar.setEnabled(false);
-//        jbModificarDatos.setEnabled(false);
-//        jbBuscar.setEnabled(true);
     }
 
     public void checkCampos() {
         // proceso de checkeo de campos para habilitado de botones borrar, guardar y modificar
-//        if ("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null || buscando) {
-//            jbEliminar.setEnabled(false);
-//            jbGuardar.setEnabled(false);
-//            jbModificarDatos.setEnabled(false);
-//        } else {
-//            jbEliminar.setEnabled(true);
-//            jbGuardar.setEnabled(true);
-//            jbModificarDatos.setEnabled(true);
-//        }
-
         if(buscando){
             jbBuscar.setEnabled(false);
             jbGuardar.setEnabled(false);
@@ -366,8 +314,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         }
     }
 
-    
-    
     public void buscarAlumno() {
         try {
             if(!buscando){
@@ -391,8 +337,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         }
     }
 
-
-    
     public void modificarAlumno() {
     int dni = Integer.parseInt(jtfDocumento.getText());
     String nombre = jtfNombre.getText();
@@ -428,4 +372,48 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }
     
 }
+    
+    public void guardarAlumno(){
+        try{
+        int dni = Integer.parseInt(jtfDocumento.getText());
+        String nombre = jtfNombre.getText();
+        String apellido = jtfApellido.getText();
+        LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Boolean estado = jrbEstado.isSelected();
+        Alumno alu = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
+        AlumnoData alumno = new AlumnoData();
+        alumno.guardarAlumno(alu);
+        limpiarCampos();
+        checkCampos();
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "el campo 'documento' solo acepta numeros, intente nuevamente");
+            limpiarCampos();
+            
+        }
+    }
+
+    private void eliminarAlumno() {
+        int dni = Integer.parseInt(jtfDocumento.getText());
+        AlumnoData alumno = new AlumnoData();
+
+        int respuesta = JOptionPane.showConfirmDialog(
+                GestionAlumnos.this,
+                "¿seguro de que deseas dar de baja al alumno con dni: " + "'" + dni + "'",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (respuesta == JOptionPane.YES_OPTION) {
+            alumno.eliminarAlumnoPorDni(dni);
+            
+        } else {
+            JOptionPane.showMessageDialog(
+                    GestionAlumnos.this,
+                    "Operación cancelada",
+                    "Información",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }
+        
+        limpiarCampos();
+    }
 }

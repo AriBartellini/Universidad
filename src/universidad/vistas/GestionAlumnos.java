@@ -1,6 +1,5 @@
 package universidad.vistas;
 
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Date;
@@ -17,20 +16,20 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         Uni univ = new Uni();
         univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
-        
+
         jdFechaNacimiento.addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                if("date".equals(evt.getPropertyName())){
+                if ("date".equals(evt.getPropertyName())) {
                     java.util.Date selectedDate = (java.util.Date) evt.getNewValue();
-                    if(selectedDate != null){
+                    if (selectedDate != null) {
                         checkCampos();
                     }
-                    
+
                 }
             }
         });
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -54,6 +53,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jdFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jbModificarDatos = new javax.swing.JButton();
 
         setTitle("Gestion Alumnos");
 
@@ -125,51 +125,59 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setText("Alumno");
 
+        jbModificarDatos.setText("modificar datos");
+        jbModificarDatos.setEnabled(false);
+        jbModificarDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbModificarDatosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jbNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbGuardar)
-                        .addGap(41, 41, 41)
-                        .addComponent(jbSalir))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(33, 33, 33)
-                                .addComponent(jbBuscar))
-                            .addComponent(jrbEstado)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jdFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(18, Short.MAX_VALUE))
             .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jbNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbModificarDatos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jbSalir)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbEstado)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                        .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jbBuscar))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jdFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(jLabel6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -201,13 +209,14 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jdFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbSalir)
                     .addComponent(jbNuevo)
                     .addComponent(jbEliminar)
                     .addComponent(jbGuardar)
-                    .addComponent(jbSalir))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(jbModificarDatos))
+                .addContainerGap())
         );
 
         pack();
@@ -227,22 +236,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         AlumnoData alumno = new AlumnoData();
         alumno.guardarAlumno(alu);
         limpiarCampos();
-        
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarMouseClicked
-        try {
-            int dni = Integer.parseInt(jtfDocumento.getText());
-            AlumnoData alumno = new AlumnoData();
-            Alumno alu = alumno.buscarAlumnoPorDni(dni);
-            jtfApellido.setText(alu.getApellido());
-            jtfNombre.setText(alu.getNombre());
-            jrbEstado.setSelected(alu.isActivo());
-            jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
-        } catch (NullPointerException | NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "DNI invalido");
-            limpiarCampos();
-        }
+        buscarAlumno();
     }//GEN-LAST:event_jbBuscarMouseClicked
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -283,27 +281,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         checkCampos();
     }//GEN-LAST:event_jtfNombreKeyReleased
 
-  public void limpiarCampos() {
-        jtfDocumento.setText("");
-        jtfApellido.setText("");
-        jtfNombre.setText("");
-        jrbEstado.setSelected(false);
-        jdFechaNacimiento.setDate(null);
+    private void jbModificarDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModificarDatosMouseClicked
 
-        jbEliminar.setEnabled(false);
-        jbGuardar.setEnabled(false);
-    }
+        modificarAlumno();
+    }//GEN-LAST:event_jbModificarDatosMouseClicked
 
-    public void checkCampos() {
-        // proceso de checkeo de campos para habilitado de botones borrar y guardar
-        if ("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null) {
-            jbEliminar.setEnabled(false);
-            jbGuardar.setEnabled(false);
-        } else {
-            jbEliminar.setEnabled(true);
-            jbGuardar.setEnabled(true);
-        }
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -315,6 +298,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbModificarDatos;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
     private com.toedter.calendar.JDateChooser jdFechaNacimiento;
@@ -324,5 +308,78 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
-  
+    public void limpiarCampos() {
+        jtfDocumento.setText("");
+        jtfApellido.setText("");
+        jtfNombre.setText("");
+        jrbEstado.setSelected(false);
+        jdFechaNacimiento.setDate(null);
+
+        jbEliminar.setEnabled(false);
+        jbGuardar.setEnabled(false);
+    }
+
+    public void checkCampos() {
+        // proceso de checkeo de campos para habilitado de botones borrar, guardar y modificar
+        if ("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null) {
+            jbEliminar.setEnabled(false);
+            jbGuardar.setEnabled(false);
+            jbModificarDatos.setEnabled(false);
+        } else {
+            jbEliminar.setEnabled(true);
+            jbGuardar.setEnabled(true);
+            jbModificarDatos.setEnabled(true);
+        }
+    }
+
+    public void buscarAlumno() {
+        try {
+            int dni = Integer.parseInt(jtfDocumento.getText());
+            AlumnoData alumno = new AlumnoData();
+            Alumno alu = alumno.buscarAlumnoPorDni(dni);
+            jtfApellido.setText(alu.getApellido());
+            jtfNombre.setText(alu.getNombre());
+            jrbEstado.setSelected(alu.isActivo());
+            jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
+
+        } catch (NullPointerException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "DNI invalido");
+            limpiarCampos();
+        }
+    }
+
+    public void modificarAlumno() {
+
+        int dnix = Integer.parseInt(jtfDocumento.getText());
+        AlumnoData alumnox = new AlumnoData();
+        Alumno alux = alumnox.buscarAlumnoPorDni(dnix);
+        int idx = alux.getIdAlumno();
+
+        int respuesta = JOptionPane.showConfirmDialog(
+                GestionAlumnos.this,
+                "¿seguro de que deseas modificar los datos seleccinados?",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (respuesta == JOptionPane.YES_OPTION) {
+            int dni = Integer.parseInt(jtfDocumento.getText());
+            String nombre = jtfNombre.getText();
+            String apellido = jtfApellido.getText();
+            LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Boolean estado = jrbEstado.isSelected();
+            int id = alux.getIdAlumno();
+
+            Alumno alu = new Alumno(id, dni, apellido, nombre, fechaNacimiento, estado);
+            AlumnoData alumno = new AlumnoData();
+            alumno.modificarAlumno(alu);
+            limpiarCampos();
+        } else {
+            JOptionPane.showMessageDialog(
+                    GestionAlumnos.this,
+                    "Operación cancelada",
+                    "Información",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }
+    }
 }

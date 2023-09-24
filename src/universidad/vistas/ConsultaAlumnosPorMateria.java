@@ -125,7 +125,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
     }
 
     private void armarCabecera() {
-        modelo.addColumn("ID Alumno");
+        modelo.addColumn("ID");
         modelo.addColumn("DNI");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");

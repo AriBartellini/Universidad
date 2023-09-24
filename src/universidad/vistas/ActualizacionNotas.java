@@ -15,8 +15,6 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         armarLista();
         Uni univ = new Uni();
         univ.centrarInternalFrame(this);
-            jcbAlumno.insertItemAt("<Seleccionar>", 0);
-            
     }
 
     @SuppressWarnings("unchecked")
@@ -38,7 +36,6 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un alumno:");
 
-        jcbAlumno.setName(""); // NOI18N
         jcbAlumno.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbAlumnoItemStateChanged(evt);
@@ -150,6 +147,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     private void cargarCombo() {
         AlumnoData alumnos = new AlumnoData();
         List lista = alumnos.listarAlumnos();
+
         for (int indice = 0; indice < lista.size(); indice++) {
             jcbAlumno.addItem(String.valueOf(lista.get(indice)));
         }

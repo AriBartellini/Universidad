@@ -31,7 +31,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 }
             }
         });
-
     }
 
     @SuppressWarnings("unchecked")

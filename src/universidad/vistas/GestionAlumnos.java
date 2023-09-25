@@ -16,6 +16,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     LocalDate fechaNacimientoMaxima = LocalDate.now().minusYears(90);
     LocalDate fechaNacimientoMinima = LocalDate.now().minusYears(18);
+  
 
     public GestionAlumnos() {
         initComponents();
@@ -25,23 +26,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         jdFechaNacimiento.addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
-            public void propertyChange(PropertyChangeEvent evt) {
+         public void propertyChange(PropertyChangeEvent evt) {
                 if ("date".equals(evt.getPropertyName())) {
                     java.util.Date selectedDate = (java.util.Date) evt.getNewValue();
                     if (selectedDate != null) {
                         checkCampos();
                     }
-
                 }
             }
         });
 
+       
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jbBuscar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
@@ -128,6 +132,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha de nacimiento:");
 
+        jdFechaNacimiento.setForeground(new java.awt.Color(240, 240, 240));
+        jdFechaNacimiento.setToolTipText("");
+        jdFechaNacimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jdFechaNacimiento.setMaxSelectableDate(new java.util.Date(1735704116000L));
+        jdFechaNacimiento.setMinSelectableDate(new java.util.Date(-1577904076000L));
+        jdFechaNacimiento.setMinimumSize(new java.awt.Dimension(55, 50));
+
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setText("Alumno");
 
@@ -160,6 +171,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -181,10 +195,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                                                 .addComponent(jbBuscar))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
-                                        .addComponent(jdFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jLabel6)))
+                                        .addComponent(jdFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -268,6 +279,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

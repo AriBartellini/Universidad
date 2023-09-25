@@ -16,16 +16,16 @@ import universidad.entidades.Alumno;
 public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private boolean buscando = false;
-    
+
     LocalDate fechaNacimientoMaxima = LocalDate.now().minusYears(90);
     LocalDate fechaNacimientoMinima = LocalDate.now().minusYears(18);
-    
+
     public GestionAlumnos() {
         initComponents();
 
         Uni univ = new Uni();
         univ.centrarInternalFrame(this); //crea un objeto Uni para ejecutar el metodo de centrado de ventana
-        
+
         jdFechaNacimiento.addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -38,7 +38,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 }
             }
         });
-  
 
     }
 
@@ -304,17 +303,17 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     public void checkCampos() {
         // proceso de checkeo de campos para habilitado de botones borrar, guardar y modificar
-        if(buscando){
+        if (buscando) {
             jbBuscar.setEnabled(false);
             jbGuardar.setEnabled(false);
             jbModificarDatos.setEnabled(true);
             jbEliminar.setEnabled(true);
-        } else if("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null){
+        } else if ("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null) {
             jbEliminar.setEnabled(false);
             jbGuardar.setEnabled(false);
             jbModificarDatos.setEnabled(false);
             jbBuscar.setEnabled(true);
-        } else if("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null || !buscando){
+        } else if ("".equals(jtfDocumento.getText()) || "".equals(jtfApellido.getText()) || "".equals(jtfNombre.getText()) || jdFechaNacimiento.getDate() == null || !buscando) {
             jbEliminar.setEnabled(false);
             jbGuardar.setEnabled(true);
             jbModificarDatos.setEnabled(false);
@@ -324,20 +323,19 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     public void buscarAlumno() {
         try {
-            if(!buscando){
-            int dni = Integer.parseInt(jtfDocumento.getText());
-            AlumnoData alumno = new AlumnoData();
-            Alumno alu = alumno.buscarAlumnoPorDni(dni);
-            jtfApellido.setText(alu.getApellido());
-            jtfNombre.setText(alu.getNombre());
-            jrbEstado.setSelected(alu.isActivo());
-            jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
-             
-             
-            buscando = true;
-            checkCampos();
+            if (!buscando) {
+                int dni = Integer.parseInt(jtfDocumento.getText());
+                AlumnoData alumno = new AlumnoData();
+                Alumno alu = alumno.buscarAlumnoPorDni(dni);
+                jtfApellido.setText(alu.getApellido());
+                jtfNombre.setText(alu.getNombre());
+                jrbEstado.setSelected(alu.isActivo());
+                jdFechaNacimiento.setDate(Date.valueOf(alu.getFechaNac()));
+
+                buscando = true;
+                checkCampos();
             }
-            
+
         } catch (NullPointerException | NumberFormatException e) {
             limpiarCampos();
             buscando = false;
@@ -346,63 +344,62 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }
 
     public void modificarAlumno() {
-    int dni = Integer.parseInt(jtfDocumento.getText());
-    String nombre = jtfNombre.getText();
-    String apellido = jtfApellido.getText();
-    LocalDate fechaNacimiento = jdFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    boolean estado = jrbEstado.isSelected();
-    
-    AlumnoData alumnoData = new AlumnoData();
-    Alumno alumnoExistente = alumnoData.buscarAlumnoPorDni(dni);
-
-    int respuesta = JOptionPane.showConfirmDialog(
-            GestionAlumnos.this,
-            "¿Estás seguro de que deseas modificar los datos del alumno seleccionado?",
-            "Confirmación",
-            JOptionPane.YES_NO_OPTION
-    );
-
-    if (respuesta == JOptionPane.YES_OPTION) {
-        int id = alumnoExistente.getIdAlumno();
-        Alumno alumnoModificado = new Alumno(id, dni, apellido, nombre, fechaNacimiento, estado);
-        alumnoData.modificarAlumno(alumnoModificado);
-        limpiarCampos();
-        
-        checkCampos();
-        
-    } else {
-        JOptionPane.showMessageDialog(
-                GestionAlumnos.this,
-                "Operación cancelada",
-                "Información",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-    }
-    
-}
-    
-    public void guardarAlumno(){
-        try{
         int dni = Integer.parseInt(jtfDocumento.getText());
         String nombre = jtfNombre.getText();
         String apellido = jtfApellido.getText();
-        LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        Boolean estado = jrbEstado.isSelected();
-        
-        if (fechaNacimiento.isBefore(fechaNacimientoMaxima) || fechaNacimiento.isAfter(fechaNacimientoMinima)) {
-        JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida.");
-    } else {
-        Alumno alu = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
-        AlumnoData alumno = new AlumnoData();
-        alumno.guardarAlumno(alu);
-        limpiarCampos();
-    }
-        
+        LocalDate fechaNacimiento = jdFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        boolean estado = jrbEstado.isSelected();
 
-        } catch(NumberFormatException e){
+        AlumnoData alumnoData = new AlumnoData();
+        Alumno alumnoExistente = alumnoData.buscarAlumnoPorDni(dni);
+
+        int respuesta = JOptionPane.showConfirmDialog(
+                GestionAlumnos.this,
+                "¿Estás seguro de que deseas modificar los datos del alumno seleccionado?",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            int id = alumnoExistente.getIdAlumno();
+            Alumno alumnoModificado = new Alumno(id, dni, apellido, nombre, fechaNacimiento, estado);
+            alumnoData.modificarAlumno(alumnoModificado);
+            limpiarCampos();
+
+
+
+        } else {
+            JOptionPane.showMessageDialog(
+                    GestionAlumnos.this,
+                    "Operación cancelada",
+                    "Información",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }
+
+    }
+
+    public void guardarAlumno() {
+        try {
+            int dni = Integer.parseInt(jtfDocumento.getText());
+            String nombre = jtfNombre.getText();
+            String apellido = jtfApellido.getText();
+            LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Boolean estado = jrbEstado.isSelected();
+
+            if (fechaNacimiento.isBefore(fechaNacimientoMaxima) || fechaNacimiento.isAfter(fechaNacimientoMinima)) {
+                JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida.");
+            } else {
+                Alumno alu = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
+                AlumnoData alumno = new AlumnoData();
+                alumno.guardarAlumno(alu);
+                limpiarCampos();
+            }
+
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "el campo 'documento' solo acepta numeros, intente nuevamente");
             limpiarCampos();
-            
+
         }
     }
 
@@ -418,7 +415,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         );
         if (respuesta == JOptionPane.YES_OPTION) {
             alumno.eliminarAlumnoPorDni(dni);
-            
+
         } else {
             JOptionPane.showMessageDialog(
                     GestionAlumnos.this,
@@ -427,7 +424,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     JOptionPane.INFORMATION_MESSAGE
             );
         }
-        
+
         limpiarCampos();
     }
 }

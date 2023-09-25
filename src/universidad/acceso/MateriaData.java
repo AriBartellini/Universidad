@@ -33,7 +33,7 @@ public class MateriaData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 materia.setIdMateria(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Materia guardado correctamente");
+                JOptionPane.showMessageDialog(null, "Materia guardada correctamente");
             }
             ps.close();
 
@@ -45,18 +45,19 @@ public class MateriaData {
 
     public void modificarMateria(Materia materia) {
 
-        String sql = "UPDATE materia SET nombre = ?, anio = ? , estado = ?";
+        String sql = "UPDATE materia SET nombre = ?, anio = ? , estado = ? WHERE idMateria = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
             ps.setBoolean(3, true);
-
+            ps.setInt(4, materia.getIdMateria());
+            
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Materia modificado correctamente");
+                JOptionPane.showMessageDialog(null, "Materia modificada correctamente");
             }
 
         } catch (SQLException ex) {
@@ -79,7 +80,7 @@ public class MateriaData {
                 materia.setAnioMateria(rs.getInt("anio"));
                 materia.setActivo(true);
             } else {
-                JOptionPane.showMessageDialog(null, "No existe un materia con ese id");
+                JOptionPane.showMessageDialog(null, "No se encontro una materia activa con ese ID");
             }
 
             ps.close();
@@ -140,7 +141,7 @@ public class MateriaData {
             ps.setInt(1, id);
             int fila = ps.executeUpdate();
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, " Se eliminó el materia");
+                JOptionPane.showMessageDialog(null, "Se eliminó el materia");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");

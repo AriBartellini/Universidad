@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -233,7 +234,7 @@ public class Uni extends javax.swing.JFrame {
         internalFrame.setLocation(x, y);
     }
     
-    private void determinarFondo(){
+    /*private void determinarFondo(){
     JLabel fondo= new JLabel();
     fondo.setIcon(new ImageIcon("fondo.jpg"));
     fondo.setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
@@ -242,5 +243,24 @@ public class Uni extends javax.swing.JFrame {
     fondo.setOpaque(false);
     escritorio.setOpaque(false);
  
+}*/
+    private void determinarFondo(){
+    JLayeredPane base = new JLayeredPane();
+    base.setBounds(0, 0, escritorio.getWidth(), escritorio.getHeight());
+
+    JLabel fondo= new JLabel();
+    fondo.setIcon(new ImageIcon("fondo.jpg"));
+    fondo.setBounds(0, 0, escritorio.getWidth(), escritorio.getHeight());
+    fondo.setOpaque(true);
+
+    JLabel logo= new JLabel();
+    logo.setIcon(new ImageIcon("logo2.png"));
+    logo.setBounds((fondo.getWidth() - logo.getPreferredSize().width) / 2, (fondo.getHeight() - logo.getPreferredSize().height) /2, logo.getPreferredSize().width, logo.getPreferredSize().height);
+
+    base.add(fondo, Integer.valueOf(0));
+   // base.add(logo, Integer.valueOf(1));
+
+    escritorio.add(base);
 }
+    
 }

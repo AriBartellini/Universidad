@@ -294,6 +294,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         int id = Integer.parseInt(jtfCodigo.getText());
         String nombre = jtfNombre.getText();
         int anio = Integer.parseInt(jtfAnio.getText());
+        //cambiar a numeros romanos el año de la materia!!!!!
         boolean estado = jrbEstado.isSelected();
 
         MateriaData materiaData = new MateriaData();

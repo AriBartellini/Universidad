@@ -15,11 +15,11 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     boolean alumnoSeleccionado = false;
     
 //    si ningun alumno seleccionado ambos rb off
-//si alumno seleccionado ambos rb on
+//  si alumno seleccionado ambos rb on
 //
-//si ningun rb seleccionado todo off
-//si materia inscripta seleccionado, eliminar off
-//si materia no inscripta inscribir off
+//  si ningun rb seleccionado todo off
+//  si materia inscripta seleccionado, eliminar off
+//  si materia no inscripta inscribir off
 
     
 

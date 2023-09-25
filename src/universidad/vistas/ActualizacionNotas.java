@@ -1,6 +1,7 @@
 package universidad.vistas;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidad.acceso.AlumnoData;
 import universidad.acceso.InscripcionData;
@@ -140,10 +141,14 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         int idAlumno = Integer.parseInt(parts[0]);
 
         double nota = Double.parseDouble((String) jtNotas.getValueAt(filaSelec, 3));
-
-        System.out.println(idAlumno + " " + idMateria + " " + nota);
+        
+        if(nota>=1 && nota<=10){
+        
         ins.actualizarNota(idAlumno, idMateria, nota);
-
+        }else{
+            JOptionPane.showMessageDialog(null, "Los datos ingresados no estan dentro de los valores correspondiente");
+        }
+        
     }//GEN-LAST:event_jbGuardarMouseClicked
 
     private void cargarCombo() {

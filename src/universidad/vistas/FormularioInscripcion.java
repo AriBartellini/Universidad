@@ -131,7 +131,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jbInscribir)
-                                    .addGap(33, 33, 33)
+                                    .addGap(18, 18, 18)
                                     .addComponent(jbAnularInscripcion)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jbSalir))

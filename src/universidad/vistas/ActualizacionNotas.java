@@ -7,7 +7,7 @@ import universidad.acceso.InscripcionData;
 
 public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private final DefaultTableModel modelo = new DefaultTableModel();
 
     public ActualizacionNotas() {
         initComponents();
@@ -15,7 +15,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         armarLista();
         Uni univ = new Uni();
         univ.centrarInternalFrame(this);
-            jcbAlumno.insertItemAt("<Seleccionar>", 0);
+       cargarDatos(1); 
             
     }
 
@@ -83,19 +83,18 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(30, 30, 30)
-                                .addComponent(jcbAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jbGuardar)
+                                .addGap(199, 199, 199)
+                                .addComponent(jbSalir))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jcbAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jbGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbSalir)
-                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +165,6 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     private void cargarDatos(int i) {
         modelo.setRowCount(0);
         InscripcionData inscripcion = new InscripcionData();
-        //List lista=alumnos.listarAlumnos();    
         List lista = inscripcion.obtenerInscripcionesPorAlumno(i);
 
         for (int indice = 0; indice < lista.size(); indice++) {

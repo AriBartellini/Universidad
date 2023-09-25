@@ -258,7 +258,7 @@ public class Uni extends javax.swing.JFrame {
     logo.setBounds((fondo.getWidth() - logo.getPreferredSize().width) / 2, (fondo.getHeight() - logo.getPreferredSize().height) /2, logo.getPreferredSize().width, logo.getPreferredSize().height);
 
     base.add(fondo, Integer.valueOf(0));
-   // base.add(logo, Integer.valueOf(1));
+    base.add(logo, Integer.valueOf(1));
 
     escritorio.add(base);
 }

@@ -1,17 +1,24 @@
 package universidad.vistas;
 
+import com.toedter.calendar.IDateEditor;
+import com.toedter.calendar.JDateChooser;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerDateModel;
 import universidad.acceso.AlumnoData;
 import universidad.entidades.Alumno;
 
 public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private boolean buscando = false;
+    
+    LocalDate fechaNacimientoMaxima = LocalDate.now().minusYears(90);
+    LocalDate fechaNacimientoMinima = LocalDate.now().minusYears(18);
     
     public GestionAlumnos() {
         initComponents();
@@ -31,6 +38,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 }
             }
         });
+  
+
     }
 
     @SuppressWarnings("unchecked")
@@ -379,11 +388,17 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         String apellido = jtfApellido.getText();
         LocalDate fechaNacimiento = jdFechaNacimiento.getCalendar().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         Boolean estado = jrbEstado.isSelected();
+        
+        if (fechaNacimiento.isBefore(fechaNacimientoMaxima) || fechaNacimiento.isAfter(fechaNacimientoMinima)) {
+        JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida.");
+    } else {
         Alumno alu = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
         AlumnoData alumno = new AlumnoData();
         alumno.guardarAlumno(alu);
         limpiarCampos();
-        checkCampos();
+    }
+        
+
         } catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "el campo 'documento' solo acepta numeros, intente nuevamente");
             limpiarCampos();

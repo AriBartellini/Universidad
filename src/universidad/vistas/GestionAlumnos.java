@@ -298,7 +298,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         checkCampos();
     }
 
-    public void checkCampos() {
+    private void checkCampos() {
         // proceso de checkeo de campos para habilitado de botones borrar, guardar y modificar
         if (buscando) {
             jbBuscar.setEnabled(false);
@@ -318,7 +318,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         }
     }
 
-    public void buscarAlumno() {
+    private void buscarAlumno() {
         try {
             if (!buscando) {
                 int dni = Integer.parseInt(jtfDocumento.getText());
@@ -340,7 +340,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         }
     }
 
-    public void modificarAlumno() {
+    private void modificarAlumno() {
         int dni = Integer.parseInt(jtfDocumento.getText());
         String nombre = jtfNombre.getText();
         String apellido = jtfApellido.getText();
@@ -376,7 +376,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     }
 
-    public void guardarAlumno() {
+    private void guardarAlumno() {
         try {
             int dni = Integer.parseInt(jtfDocumento.getText());
             String nombre = jtfNombre.getText();

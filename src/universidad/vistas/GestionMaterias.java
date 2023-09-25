@@ -330,7 +330,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         
     }
     
-    public void guardarMateria(){
+    private void guardarMateria(){
         try{
             
         MateriaData materiaData = new MateriaData();
@@ -358,7 +358,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         }
     }
     
-    public void eliminarMateria() {
+    private void eliminarMateria() {
         int id = Integer.parseInt(jtfCodigo.getText());
         String nombre = jtfNombre.getText();
         MateriaData materia = new MateriaData();

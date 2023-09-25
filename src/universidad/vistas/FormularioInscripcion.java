@@ -11,6 +11,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel();
     ButtonGroup grupoRb = new ButtonGroup();
+    boolean alumnoSeleccionado = false;
+    
 
     public FormularioInscripcion() {
         initComponents();

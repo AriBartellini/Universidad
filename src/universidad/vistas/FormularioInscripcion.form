@@ -124,6 +124,7 @@
     <Component class="javax.swing.JRadioButton" name="jrbMateriasInscriptas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Materias Inscriptas"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbMateriasInscriptasActionPerformed"/>
@@ -132,6 +133,7 @@
     <Component class="javax.swing.JRadioButton" name="jrbMateriasNoInscriptas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Materias no inscriptas"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbMateriasNoInscriptasActionPerformed"/>
@@ -188,17 +190,19 @@
     <Component class="javax.swing.JButton" name="jbInscribir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inscribir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbInscribirMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbInscribirActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbAnularInscripcion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Inscripci&#xf3;n"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbAnularInscripcionMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAnularInscripcionActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbSalir">

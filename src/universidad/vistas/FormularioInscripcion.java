@@ -11,6 +11,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel();
     ButtonGroup grupoRb = new ButtonGroup();
+    boolean alumnoSeleccionado = false;
+    
 
     public FormularioInscripcion() {
         initComponents();
@@ -60,6 +62,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         jLabel2.setText("Listado de materias");
 
         jrbMateriasInscriptas.setText("Materias Inscriptas");
+        jrbMateriasInscriptas.setEnabled(false);
         jrbMateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMateriasInscriptasActionPerformed(evt);
@@ -67,6 +70,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         });
 
         jrbMateriasNoInscriptas.setText("Materias no inscriptas");
+        jrbMateriasNoInscriptas.setEnabled(false);
         jrbMateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMateriasNoInscriptasActionPerformed(evt);
@@ -87,16 +91,18 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtMaterias);
 
         jbInscribir.setText("Inscribir");
-        jbInscribir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbInscribirMouseClicked(evt);
+        jbInscribir.setEnabled(false);
+        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInscribirActionPerformed(evt);
             }
         });
 
         jbAnularInscripcion.setText("Eliminar Inscripción");
-        jbAnularInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbAnularInscripcionMouseClicked(evt);
+        jbAnularInscripcion.setEnabled(false);
+        jbAnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAnularInscripcionActionPerformed(evt);
             }
         });
 
@@ -176,44 +182,6 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jbInscribirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbInscribirMouseClicked
-        
-        //Seleccion del alumno
-        String selectedItem = (String) jcbAlumnos.getSelectedItem();
-        String[] parts = selectedItem.split(" - ");
-        int idAlumno = Integer.parseInt(parts[0]);
-        
-        //seleccionar materia
-        int filaSelec = jtMaterias.getSelectedRow();
-        int idMateria = (int) jtMaterias.getValueAt(filaSelec, 0);
-        
-        //llamar a inscripcion Data
-        InscripcionData id = new InscripcionData();
-        id.guardarInscripcion(idAlumno, idMateria);
-
-        actualizarTabla(); //actualizamos tabla para ver el cambio
-    }//GEN-LAST:event_jbInscribirMouseClicked
-
-    private void jbAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAnularInscripcionMouseClicked
-        
-        //Seleccion del alumno
-        String selectedItem = (String) jcbAlumnos.getSelectedItem();
-        String[] parts = selectedItem.split(" - ");
-        int idAlumno = Integer.parseInt(parts[0]);
-        
-        //seleccionar materia
-        int filaSelec = jtMaterias.getSelectedRow();
-        int idMateria = (int) jtMaterias.getValueAt(filaSelec, 0);
-        
-        //llamar a InscripcionData
-        InscripcionData id = new InscripcionData();
-        id.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
-        
-        //actualizamos tabla para ver el cambio
-        actualizarTabla(); 
-        
-    }//GEN-LAST:event_jbAnularInscripcionMouseClicked
-
     private void jrbMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_jrbMateriasInscriptasActionPerformed
@@ -229,6 +197,14 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbAlumnosActionPerformed
+
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
+        inscribirAlumno();
+    }//GEN-LAST:event_jbInscribirActionPerformed
+
+    private void jbAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularInscripcionActionPerformed
+        anularInscripcion();
+    }//GEN-LAST:event_jbAnularInscripcionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -301,5 +277,38 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         }
 
     }
+    private void anularInscripcion(){
+        //Seleccion del alumno
+        String selectedItem = (String) jcbAlumnos.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        
+        //seleccionar materia
+        int filaSelec = jtMaterias.getSelectedRow();
+        int idMateria = (int) jtMaterias.getValueAt(filaSelec, 0);
+        
+        //llamar a InscripcionData
+        InscripcionData id = new InscripcionData();
+        id.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
+        
+        //actualizamos tabla para ver el cambio
+        actualizarTabla(); 
+    }
 
+    private void inscribirAlumno(){
+        //Seleccion del alumno
+        String selectedItem = (String) jcbAlumnos.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        
+        //seleccionar materia
+        int filaSelec = jtMaterias.getSelectedRow();
+        int idMateria = (int) jtMaterias.getValueAt(filaSelec, 0);
+        
+        //llamar a inscripcion Data
+        InscripcionData id = new InscripcionData();
+        id.guardarInscripcion(idAlumno, idMateria);
+
+        actualizarTabla(); //actualizamos tabla para ver el cambio
+    }
 }

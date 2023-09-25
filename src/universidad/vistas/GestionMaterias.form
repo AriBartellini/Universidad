@@ -22,7 +22,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -43,12 +43,10 @@
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jtfCodigo" pref="134" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jrbEstado" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfAnio" alignment="0" pref="134" max="32767" attributes="0"/>
-                              <Component id="jtfNombre" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jrbEstado" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfAnio" alignment="0" pref="134" max="32767" attributes="0"/>
+                          <Component id="jtfNombre" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jbBuscar" min="-2" max="-2" attributes="0"/>
@@ -59,9 +57,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jbModificarDatos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbGuardar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jbModificarDatos" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -96,13 +94,13 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <Component id="jrbEstado" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbModificarDatos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbModificarDatos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -196,7 +194,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbModificarDatos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Modificar datos"/>
+        <Property name="text" type="java.lang.String" value="Modificar Datos"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>

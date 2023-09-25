@@ -1,15 +1,11 @@
 package universidad.vistas;
 
-import com.toedter.calendar.IDateEditor;
-import com.toedter.calendar.JDateChooser;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
-import javax.swing.SpinnerDateModel;
 import universidad.acceso.AlumnoData;
 import universidad.entidades.Alumno;
 
@@ -134,7 +130,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setText("Alumno");
 
-        jbModificarDatos.setText("modificar datos");
+        jbModificarDatos.setText("Modificar Datos");
         jbModificarDatos.setEnabled(false);
         jbModificarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +154,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jbGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbModificarDatos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(jbSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

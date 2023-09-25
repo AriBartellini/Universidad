@@ -98,7 +98,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel5.setText("Materia");
 
-        jbModificarDatos.setText("Modificar datos");
+        jbModificarDatos.setText("Modificar Datos");
         jbModificarDatos.setEnabled(false);
         jbModificarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,11 +127,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                                 .addGap(47, 47, 47)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jrbEstado)
-                                .addComponent(jLabel5)
-                                .addComponent(jtfAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                .addComponent(jtfNombre)))
+                            .addComponent(jrbEstado)
+                            .addComponent(jLabel5)
+                            .addComponent(jtfAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(jtfNombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbBuscar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -140,9 +139,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbModificarDatos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbGuardar)))
+                        .addComponent(jbGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbModificarDatos)))
                 .addGap(18, 18, 18)
                 .addComponent(jbSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -169,13 +168,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jrbEstado))
-                .addGap(41, 41, 41)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbLimpiar)
                     .addComponent(jbEliminar)
                     .addComponent(jbGuardar)
-                    .addComponent(jbModificarDatos)
-                    .addComponent(jbSalir))
+                    .addComponent(jbSalir)
+                    .addComponent(jbModificarDatos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

@@ -156,11 +156,20 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
             // Utilizamos el método split() para dividir la cadena en elementos
             String[] elementos = cadena.split(" ");
             // Iteramos a través del arreglo de elementos y los imprimimos           
-            modelo.addRow(new Object[]{elementos[0], elementos[1] + " " + elementos[2], elementos[3] + " " + elementos[4], elementos[5]});
-
+            modelo.addRow(new Object[]{elementos[0], elementos[3] + " " + elementos[4], elementos[1] + " " + elementos[2], elementos[5]});
+            //elemento 0 id
+            //1 nombre
+            //2 apellido
+            //3 materia
+            //4 anio
+            //5 nota
         }
-    }
+  }
 
+    //private void cargarDatos(){
+        
+    //}
+    
     private void cargarCombo() {
         AlumnoData alumnos = new AlumnoData();
         List lista = alumnos.listarAlumnos();
@@ -172,8 +181,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     private void armarLista() {
         modelo.addColumn("ID Materia");
         modelo.addColumn("Materia");
-        modelo.addColumn("Alumno");
-        
+        modelo.addColumn("Alumno");    
         modelo.addColumn("Nota");
         jtNotas.setModel(modelo);
     }

@@ -1,7 +1,11 @@
 package universidad.vistas;
 
+import java.util.EventObject;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import universidad.acceso.InscripcionData;
 import universidad.acceso.MateriaData;
 import universidad.entidades.Alumno;
@@ -10,7 +14,14 @@ import universidad.entidades.Materia;
 public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo;
-
+///////////////////////////////////////////////////////////////////////////////
+    DefaultCellEditor cellEditor = new DefaultCellEditor(new JTextField()) {
+        @Override
+        public boolean isCellEditable(EventObject e) {
+            return false; // No permitir la edición
+        }
+    };
+//////////////////////////////////////////////////////////////////////////////////////// codigo nuevo
     public ConsultaAlumnosPorMateria() {
         this.modelo = new DefaultTableModel();
         initComponents();
@@ -120,12 +131,22 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
     }
 
     private void armarCabecera() {
+
         modelo.addColumn("ID Alumno");
         modelo.addColumn("DNI");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
-       // modelo.setEditingAllowed(false);
+/////////////////////////////////////////////////////////////////////////////////////////////////
         jtMateria.setModel(modelo);
+        for (int i = 0; i < jtMateria.getColumnCount(); i++) {
+            TableColumn column = jtMateria.getColumnModel().getColumn(i);
+            column.setCellEditor(cellEditor);
+        }
+        jtMateria.getTableHeader().setReorderingAllowed(false);
+        for (int i = 0; i < jtMateria.getColumnCount(); i++) {
+            jtMateria.getColumnModel().getColumn(i).setResizable(false);
+        }
+        ////////////////////////////////////////////////////////////////////////////////////// codigo nuevo
     }
 
     private void borrarFilas() {

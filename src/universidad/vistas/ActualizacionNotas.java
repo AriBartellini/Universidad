@@ -171,15 +171,14 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
     private void armarLista() {
         modelo.addColumn("ID Materia");
-        modelo.addColumn("Alumno");
         modelo.addColumn("Materia");
+        modelo.addColumn("Alumno");
+        
         modelo.addColumn("Nota");
         jtNotas.setModel(modelo);
     }
  
     private void guardarDatos(){
-        //jtNotas.isEditing();
-        //jtNotas.isEditing(false);
 
         InscripcionData ins = new InscripcionData();
         int filaSelec = (int) jtNotas.getSelectedRow();

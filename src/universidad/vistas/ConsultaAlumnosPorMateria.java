@@ -22,6 +22,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         }
     };
 //////////////////////////////////////////////////////////////////////////////////////// codigo nuevo
+
     public ConsultaAlumnosPorMateria() {
         this.modelo = new DefaultTableModel();
         initComponents();
@@ -136,16 +137,20 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         modelo.addColumn("DNI");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
-/////////////////////////////////////////////////////////////////////////////////////////////////
         jtMateria.setModel(modelo);
-        for (int i = 0; i < jtMateria.getColumnCount(); i++) {
-            TableColumn column = jtMateria.getColumnModel().getColumn(i);
-            column.setCellEditor(cellEditor);
-        }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
         jtMateria.getTableHeader().setReorderingAllowed(false);
+
         for (int i = 0; i < jtMateria.getColumnCount(); i++) {
+
+            TableColumn column = jtMateria.getColumnModel().getColumn(i);
             jtMateria.getColumnModel().getColumn(i).setResizable(false);
+            column.setCellEditor(cellEditor);
+            jtMateria.getColumnModel().getColumn(i).setResizable(false);
+
         }
+
         ////////////////////////////////////////////////////////////////////////////////////// codigo nuevo
     }
 

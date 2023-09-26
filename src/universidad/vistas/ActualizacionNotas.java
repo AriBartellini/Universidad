@@ -16,8 +16,8 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         armarLista();
         Uni univ = new Uni();
         univ.centrarInternalFrame(this);
-       cargarDatos(1); 
-            
+        cargarDatos(1);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -131,41 +131,20 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbAlumnoItemStateChanged
 
     private void jbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbGuardarMouseClicked
+        guardarDatos();
 
-        InscripcionData ins = new InscripcionData();
-        int filaSelec = (int) jtNotas.getSelectedRow();
-        int idMateria = Integer.parseInt((String) jtNotas.getValueAt(filaSelec, 0));
-
-        String selectedItem = (String) jcbAlumno.getSelectedItem();
-        String[] parts = selectedItem.split(" ");
-        int idAlumno = Integer.parseInt(parts[0]);
-
-        double nota = Double.parseDouble((String) jtNotas.getValueAt(filaSelec, 3));
-        
-        if(nota>=1 && nota<=10){
-        
-        ins.actualizarNota(idAlumno, idMateria, nota);
-        }else{
-            JOptionPane.showMessageDialog(null, "Los datos ingresados no estan dentro de los valores correspondiente");
-        }
-        
     }//GEN-LAST:event_jbGuardarMouseClicked
 
-    private void cargarCombo() {
-        AlumnoData alumnos = new AlumnoData();
-        List lista = alumnos.listarAlumnos();
-        for (int indice = 0; indice < lista.size(); indice++) {
-            jcbAlumno.addItem(String.valueOf(lista.get(indice)));
-        }
-    }
 
-    private void armarLista() {
-        modelo.addColumn("ID Materia");
-        modelo.addColumn("Alumno");
-        modelo.addColumn("Materia");
-        modelo.addColumn("Nota");
-        jtNotas.setModel(modelo);
-    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JComboBox<String> jcbAlumno;
+    private javax.swing.JTable jtNotas;
+    // End of variables declaration//GEN-END:variables
 
     private void cargarDatos(int i) {
         modelo.setRowCount(0);
@@ -182,14 +161,47 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         }
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbGuardar;
-    private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcbAlumno;
-    private javax.swing.JTable jtNotas;
-    // End of variables declaration//GEN-END:variables
+    private void cargarCombo() {
+        AlumnoData alumnos = new AlumnoData();
+        List lista = alumnos.listarAlumnos();
+        for (int indice = 0; indice < lista.size(); indice++) {
+            jcbAlumno.addItem(String.valueOf(lista.get(indice)));
+        }
+    }
 
+    private void armarLista() {
+        modelo.addColumn("ID Materia");
+        modelo.addColumn("Alumno");
+        modelo.addColumn("Materia");
+        modelo.addColumn("Nota");
+        jtNotas.setModel(modelo);
+    }
+ 
+    private void guardarDatos(){
+        //jtNotas.isEditing();
+        //jtNotas.isEditing(false);
+
+        InscripcionData ins = new InscripcionData();
+        int filaSelec = (int) jtNotas.getSelectedRow();
+        int idMateria = Integer.parseInt((String) jtNotas.getValueAt(filaSelec, 0));
+
+        String selectedItem = (String) jcbAlumno.getSelectedItem();
+        String[] parts = selectedItem.split(" ");
+        int idAlumno = Integer.parseInt(parts[0]);
+        try {
+            double nota = Double.parseDouble((String) jtNotas.getValueAt(filaSelec, 3));
+
+            if (nota >= 1 && nota <= 10) {
+
+                ins.actualizarNota(idAlumno, idMateria, nota);
+            } else {
+                JOptionPane.showMessageDialog(null, "Los datos ingresados no estan dentro de los valores correspondiente");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "nota no cargada, vuelva a intentarlo");
+            ins.actualizarNota(idAlumno, idMateria, 0.0);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "el campo nota solo permite ingresar numeros, vuelva a intentarlo");
+        }
+    }
 }

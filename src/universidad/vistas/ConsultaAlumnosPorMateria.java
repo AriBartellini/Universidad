@@ -124,6 +124,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
         modelo.addColumn("DNI");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
+       // modelo.setEditingAllowed(false);
         jtMateria.setModel(modelo);
     }
 

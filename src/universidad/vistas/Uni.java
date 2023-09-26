@@ -113,11 +113,6 @@ public class Uni extends javax.swing.JFrame {
                 jmSalirMouseClicked(evt);
             }
         });
-        jmSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmSalirActionPerformed(evt);
-            }
-        });
         jMenuBar1.add(jmSalir);
 
         setJMenuBar(jMenuBar1);
@@ -187,10 +182,6 @@ public class Uni extends javax.swing.JFrame {
         escritorio.add(cam);
         escritorio.moveToFront(cam);
     }//GEN-LAST:event_jmiAlumnosPorMateriaActionPerformed
-
-    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
-        // esto no hace nada 
-    }//GEN-LAST:event_jmSalirActionPerformed
 
     private void jmSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSalirMouseClicked
         System.exit(0);

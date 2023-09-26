@@ -195,15 +195,15 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbMateriasNoInscriptasActionPerformed
 
     private void jcbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseClicked
+
         alumnoSeleccionado = true;
         limpiarRb();
         checkCampos();
 
-
     }//GEN-LAST:event_jcbAlumnosMouseClicked
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
-        // TODO add your handling code here:
+        // este evento action performed lanza una excepcion de arreglo fuera de limites (i have no idea why)
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
@@ -340,7 +340,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
             jbInscribir.setEnabled(true);
 
         } else {
-            
+
             jbInscribir.setEnabled(false);
             jbAnularInscripcion.setEnabled(false);
         }

@@ -85,6 +85,11 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtMaterias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtMateriasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtMaterias);
 
         jbInscribir.setText("Inscribir");
@@ -181,18 +186,20 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private void jrbMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasActionPerformed
         actualizarTabla();
-        checkCampos();
+
     }//GEN-LAST:event_jrbMateriasInscriptasActionPerformed
 
     private void jrbMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasActionPerformed
         actualizarTabla();
-        checkCampos();
+
     }//GEN-LAST:event_jrbMateriasNoInscriptasActionPerformed
 
     private void jcbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseClicked
-        limpiarRb();
         alumnoSeleccionado = true;
+        limpiarRb();
         checkCampos();
+
+
     }//GEN-LAST:event_jcbAlumnosMouseClicked
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
@@ -208,6 +215,10 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         anularInscripcion();
         checkCampos();
     }//GEN-LAST:event_jbAnularInscripcionActionPerformed
+
+    private void jtMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtMateriasMouseClicked
+        checkCampos();
+    }//GEN-LAST:event_jtMateriasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -275,6 +286,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
                 modelo.addRow(new Object[]{elemento.getIdMateria(), elemento.getNombre(), elemento.getAnioMateria()});
             });
         }
+        checkCampos();
 
     }
 
@@ -315,23 +327,23 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private void checkCampos() {
 
-    if (alumnoSeleccionado) {
-        jrbMateriasInscriptas.setEnabled(true);
-        jrbMateriasNoInscriptas.setEnabled(true);
+        if (alumnoSeleccionado) {
+            jrbMateriasInscriptas.setEnabled(true);
+            jrbMateriasNoInscriptas.setEnabled(true);
+        }
 
-        if (jrbMateriasInscriptas.isSelected()) {
+        if (jrbMateriasInscriptas.isSelected() && jtMaterias.getSelectedRow() != -1) {
             jbAnularInscripcion.setEnabled(true);
             jbInscribir.setEnabled(false);
-        } else if (jrbMateriasNoInscriptas.isSelected()) {
+        } else if (jrbMateriasNoInscriptas.isSelected() && jtMaterias.getSelectedRow() != -1) {
             jbAnularInscripcion.setEnabled(false);
             jbInscribir.setEnabled(true);
+
+        } else {
+            
+            jbInscribir.setEnabled(false);
+            jbAnularInscripcion.setEnabled(false);
         }
-    } else {
-        jrbMateriasInscriptas.setEnabled(false);
-        jrbMateriasNoInscriptas.setEnabled(false);
-        jbInscribir.setEnabled(false);
-        jbAnularInscripcion.setEnabled(false);
     }
-}
 
 }

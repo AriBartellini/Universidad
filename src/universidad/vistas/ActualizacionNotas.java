@@ -17,7 +17,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         Uni univ = new Uni();
         univ.centrarInternalFrame(this);
         cargarDatos(1);
-        jbGuardar.setEnabled(false);
+       // jbGuardar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -202,11 +202,11 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         }
     }
     
-    //agregar un checkCampos
+    /*//agregar un checkCampos
     private void checkCampos(){
          if (notaCargada) {
         jbGuardar.setEnabled(true);
     } 
     
-    }   
+    }  */
 }

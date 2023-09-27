@@ -77,7 +77,7 @@ public class Uni extends javax.swing.JFrame {
 
         jMenu3.setText("Administracion");
 
-        jmiManejoInscripciones.setText("Manejo de inscripciones");
+        jmiManejoInscripciones.setText("Formulario de inscripcion");
         jmiManejoInscripciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiManejoInscripcionesActionPerformed(evt);
@@ -85,7 +85,7 @@ public class Uni extends javax.swing.JFrame {
         });
         jMenu3.add(jmiManejoInscripciones);
 
-        jmiManipulacionNotas.setText("Manipulacion de notas");
+        jmiManipulacionNotas.setText("Carga de notas");
         jmiManipulacionNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiManipulacionNotasActionPerformed(evt);

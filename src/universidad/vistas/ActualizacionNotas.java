@@ -9,7 +9,7 @@ import universidad.acceso.InscripcionData;
 public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel();
-
+    boolean notaCargada = false;
     public ActualizacionNotas() {
         initComponents();
         cargarCombo();
@@ -17,7 +17,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         Uni univ = new Uni();
         univ.centrarInternalFrame(this);
         cargarDatos(1);
-
+        jbGuardar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -60,9 +60,9 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtNotas);
 
         jbGuardar.setText("Guardar");
-        jbGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbGuardarMouseClicked(evt);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
             }
         });
 
@@ -127,14 +127,13 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         String[] elementos = alumnoSeleccionado.split(" ");
         int num = Integer.parseInt(elementos[0]);
         cargarDatos(num);
+        notaCargada= true;
 
     }//GEN-LAST:event_jcbAlumnoItemStateChanged
 
-    private void jbGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbGuardarMouseClicked
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         guardarDatos();
-
-    }//GEN-LAST:event_jbGuardarMouseClicked
-
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -153,23 +152,12 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
         for (int indice = 0; indice < lista.size(); indice++) {
             String cadena = String.valueOf(lista.get(indice));
-            // Utilizamos el método split() para dividir la cadena en elementos
             String[] elementos = cadena.split(" ");
-            // Iteramos a través del arreglo de elementos y los imprimimos           
             modelo.addRow(new Object[]{elementos[0], elementos[3] + " " + elementos[4], elementos[1] + " " + elementos[2], elementos[5]});
-            //elemento 0 id
-            //1 nombre
-            //2 apellido
-            //3 materia
-            //4 anio
-            //5 nota
+            //elemento 0 id   //1 nombre    //2 apellido   //3 materia    //4 anio      //5 nota
         }
   }
 
-    //private void cargarDatos(){
-        
-    //}
-    
     private void cargarCombo() {
         AlumnoData alumnos = new AlumnoData();
         List lista = alumnos.listarAlumnos();
@@ -202,14 +190,23 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
             if (nota >= 1 && nota <= 10) {
 
                 ins.actualizarNota(idAlumno, idMateria, nota);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Los datos ingresados no estan dentro de los valores correspondiente");
             }
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "nota no cargada, vuelva a intentarlo");
+            JOptionPane.showMessageDialog(null, "Nota no cargada, vuelva a intentarlo");
             ins.actualizarNota(idAlumno, idMateria, 0.0);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "el campo nota solo permite ingresar numeros, vuelva a intentarlo");
+            JOptionPane.showMessageDialog(null, "El campo nota solo permite ingresar numeros, vuelva a intentarlo");
         }
     }
+    
+    //agregar un checkCampos
+    private void checkCampos(){
+         if (notaCargada) {
+        jbGuardar.setEnabled(true);
+    } 
+    
+    }   
 }

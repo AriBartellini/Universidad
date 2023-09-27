@@ -41,7 +41,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiManejoInscripciones">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manejo de inscripciones"/>
+                <Property name="text" type="java.lang.String" value="Formulario de inscripcion"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiManejoInscripcionesActionPerformed"/>
@@ -49,7 +49,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiManipulacionNotas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manipulacion de notas"/>
+                <Property name="text" type="java.lang.String" value="Carga de notas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiManipulacionNotasActionPerformed"/>

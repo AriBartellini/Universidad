@@ -187,7 +187,8 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
     }
  
     private void guardarDatos(){
-
+        jtNotas.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE); // ahce
+        
         InscripcionData ins = new InscripcionData();
         int filaSelec = (int) jtNotas.getSelectedRow();
         int idMateria = Integer.parseInt((String) jtNotas.getValueAt(filaSelec, 0));

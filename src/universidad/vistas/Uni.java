@@ -225,16 +225,6 @@ public class Uni extends javax.swing.JFrame {
         internalFrame.setLocation(x, y);
     }
     
-    /*private void determinarFondo(){
-    JLabel fondo= new JLabel();
-    fondo.setIcon(new ImageIcon("fondo.jpg"));
-    fondo.setBounds(0,0,escritorio.getWidth(),escritorio.getHeight());
-    escritorio.add(fondo);
-    escritorio.setComponentZOrder(fondo, 0);
-    fondo.setOpaque(false);
-    escritorio.setOpaque(false);
- 
-}*/
     private void determinarFondo(){
     JLayeredPane base = new JLayeredPane();
     base.setBounds(0, 0, escritorio.getWidth(), escritorio.getHeight());

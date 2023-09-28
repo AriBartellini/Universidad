@@ -332,10 +332,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             );
         }
         } else{
-            JOptionPane.showMessageDialog(null, "el año debe ser de 1 a 5, intente nuevamente");
+            JOptionPane.showMessageDialog(null, "El año debe ser de 1 a 5, intente nuevamente");
         }
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "numero introducido en año, intente nuevamente");
+            JOptionPane.showMessageDialog(null, "Numero introducido en año, intente nuevamente");
         }
         
     }
@@ -352,18 +352,18 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         
         if(materia.getAnioMateria()<6 && materia.getAnioMateria()>0){
             if (!"".equals(jtfCodigo.getText())){
-                JOptionPane.showMessageDialog(null, "usted ha ingresado un codigo que sera ignorado por el sistema");
+                JOptionPane.showMessageDialog(null, "Usted ha ingresado un codigo que sera ignorado por el sistema");
             }
             materiaData.guardarMateria(materia);
             limpiarCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "el año debe ser de 1 a 5, intente nuevamente");
+            JOptionPane.showMessageDialog(null, "El año debe ser de 1 a 5, intente nuevamente");
         }
         
         
             
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "numero introducido en año, intente nuevamente");
+            JOptionPane.showMessageDialog(null, "Numero introducido en año, intente nuevamente");
             
         }
     }
@@ -375,7 +375,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         int respuesta = JOptionPane.showConfirmDialog(
                 GestionMaterias.this,
-                "¿seguro de que deseas dar de baja la materia: " + "'" + nombre + "'",
+                "¿Seguro de que deseas dar de baja la materia: " + "'" + nombre + "'",
                 "Confirmación",
                 JOptionPane.YES_NO_OPTION
         );

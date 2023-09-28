@@ -405,7 +405,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "el campo 'documento' solo acepta numeros, intente nuevamente");
+            JOptionPane.showMessageDialog(null, "El campo 'documento' solo acepta numeros, intente nuevamente");
             limpiarCampos();
 
         }
@@ -417,7 +417,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         int respuesta = JOptionPane.showConfirmDialog(
                 GestionAlumnos.this,
-                "¿seguro de que deseas dar de baja al alumno con dni: " + "'" + dni + "'",
+                "¿Está seguro de que deseas dar de baja al alumno con dni: " + "'" + dni + "'",
                 "Confirmación",
                 JOptionPane.YES_NO_OPTION
         );

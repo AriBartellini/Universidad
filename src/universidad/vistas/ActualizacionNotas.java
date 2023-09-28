@@ -8,7 +8,18 @@ import universidad.acceso.InscripcionData;
 
 public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
-    private final DefaultTableModel modelo = new DefaultTableModel();
+    private final DefaultTableModel modelo = new DefaultTableModel(){
+    
+        public boolean isCellEditable(int fila, int columna){
+            if(columna==3){                
+                return true;
+            }else{
+                return false;
+            }
+        
+        
+    }};
+    
     boolean notaCargada = false;
     public ActualizacionNotas() {
         initComponents();

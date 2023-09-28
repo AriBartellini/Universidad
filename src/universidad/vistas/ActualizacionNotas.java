@@ -10,12 +10,9 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel(){
     
+        @Override
         public boolean isCellEditable(int fila, int columna){
-            if(columna==3){                
-                return true;
-            }else{
-                return false;
-            }
+            return columna==3;
         
         
     }};
@@ -28,7 +25,7 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
         Uni univ = new Uni();
         univ.centrarInternalFrame(this);
         cargarDatos(1);
-       // jbGuardar.setEnabled(false);
+     
     }
 
     @SuppressWarnings("unchecked")
@@ -212,12 +209,5 @@ public class ActualizacionNotas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "El campo nota solo permite ingresar numeros, vuelva a intentarlo");
         }
     }
-    
-    /*//agregar un checkCampos
-    private void checkCampos(){
-         if (notaCargada) {
-        jbGuardar.setEnabled(true);
-    } 
-    
-    }  */
+   
 }
